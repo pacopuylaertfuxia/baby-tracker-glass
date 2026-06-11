@@ -1,0 +1,539 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0C194C68D8DCCF5EDB210EE7 /* DayTimelineBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABCAF24D95D52ED81F00AB3 /* DayTimelineBar.swift */; };
+		0D0800DF44659F274853A854 /* TimelineTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476FDD91ED3B6BC18FCD1EF8 /* TimelineTab.swift */; };
+		0FBB19247A0DDD927994E00B /* icon_add_src.png in Resources */ = {isa = PBXBuildFile; fileRef = DB508D042701800EACB657F0 /* icon_add_src.png */; };
+		17C694CD8F716CBAA6D565A8 /* SleepSummaryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 971055D34C3FE54C6BF718D5 /* SleepSummaryCard.swift */; };
+		1B04CBF837747485ABD468F3 /* icon_moon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0075E5B9089BB697BC089141 /* icon_moon.png */; };
+		230AE25EEEDBC8F47D5D56C2 /* icon_feed_src.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DFE0F5039ECC0AD19A563FC /* icon_feed_src.png */; };
+		28855C31648BA412E016B618 /* baby_avatar_src.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D775B48FAEC97892DBD3026 /* baby_avatar_src.png */; };
+		2D768F3B5912D9F8C8FD98A7 /* BabyTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1717F2228545C27895232981 /* BabyTrackerApp.swift */; };
+		319508AC1E386362ADE73ADB /* icon_diaper.png in Resources */ = {isa = PBXBuildFile; fileRef = CDBDB95C98FD1ED812A3B782 /* icon_diaper.png */; };
+		33B9A998B6EB08131470EF80 /* icon_wake.png in Resources */ = {isa = PBXBuildFile; fileRef = C180C42CC67BCCF40E4B2F34 /* icon_wake.png */; };
+		33F0828446C82411E1D006AC /* BabyStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717DFB2DA758CE6CB086393F /* BabyStore.swift */; };
+		396814D8806D2495F27EA8A1 /* ActiveSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E45ED22F714A3AD1AD478C /* ActiveSession.swift */; };
+		4CBB6066711A4679C932C8D8 /* icon_diaper_src.png in Resources */ = {isa = PBXBuildFile; fileRef = C98220FDDAAC7029B18A5889 /* icon_diaper_src.png */; };
+		4D2DCFC1414650BF04B494CD /* screenshot_ref.png in Resources */ = {isa = PBXBuildFile; fileRef = 84DA94A02910C5210BB32BCF /* screenshot_ref.png */; };
+		51BECDE73E5C10BA44C39747 /* TimelineStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9376F4E9C0AF6F66F298BD /* TimelineStore.swift */; };
+		5BB7193B2F7A12987F4EF715 /* icon_nap_src.png in Resources */ = {isa = PBXBuildFile; fileRef = C4FF66129836DC7D81311A9E /* icon_nap_src.png */; };
+		60DA4544653760AEC5A0075D /* icon_sun.png in Resources */ = {isa = PBXBuildFile; fileRef = A7A810C3BB2819EC5F343F64 /* icon_sun.png */; };
+		70BFBB5CF68ADD06BAF81737 /* BabyProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E7709F9353A05E86C65018 /* BabyProfile.swift */; };
+		83174995A3EB82F303B7DD2A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8BFDA3D09B08DCB4043093E /* Assets.xcassets */; };
+		864CB67614506B81A19E28FF /* icon_wake_src.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E4471C9B115BAEB2DB887D5 /* icon_wake_src.png */; };
+		882E987730A0F6F63567297F /* QuickActionGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0917430CEC727F7FE7E76077 /* QuickActionGrid.swift */; };
+		967691C4636E1D40228EDB6B /* WeeklyChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492682DA79727E8FF22339E4 /* WeeklyChart.swift */; };
+		9E5CE9BA9AF826191E5258EA /* SessionPill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E37494AAF59356555C3F39 /* SessionPill.swift */; };
+		A0E55112F40DCEEDA5BFCF2F /* ExpandedSessionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C5FDF802818F4EA0E5CFCA /* ExpandedSessionCard.swift */; };
+		A57898BD5347C50DE4AD4FB2 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE3F6E1BFA072945E1B0274 /* SessionManager.swift */; };
+		A750B2B9FFE8FD5733A9B8C1 /* baby_avatar.png in Resources */ = {isa = PBXBuildFile; fileRef = C79B48A79B99A33DA2833A2C /* baby_avatar.png */; };
+		BBEB6373BBC197F397E3DBEC /* icon_nap.png in Resources */ = {isa = PBXBuildFile; fileRef = DB6CBAD166E5A2963BCFF7C9 /* icon_nap.png */; };
+		BFFBC3207F60273A691E3877 /* BabyProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DBC1C7631F2AFDD1CF434E /* BabyProfileHeader.swift */; };
+		C19AEB26C04F58E947650C52 /* OverviewTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6982DE8DBB1325E1BF96EE2 /* OverviewTab.swift */; };
+		CB64FB2E4DDD235A1EA73B0F /* Kepler-Std-Display.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0F84183CDDB4DDE1A70F8BC2 /* Kepler-Std-Display.otf */; };
+		CD97B2CE7B50074DBB4E1D7D /* DevicesTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10A20F78BED525009EFBBFD /* DevicesTab.swift */; };
+		CF2819F5B8B53158EB97D5C1 /* icon_feed.png in Resources */ = {isa = PBXBuildFile; fileRef = F7A88840687EF8C22F6A33F3 /* icon_feed.png */; };
+		E22EC173ED828A86DB8F2DC4 /* TimelineEventRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B27196B556A88541BEA446 /* TimelineEventRow.swift */; };
+		E8BFFAC8FC4D977FE6BFA4E9 /* MoonboonTypography.swift in Sources */ = {isa = PBXBuildFile; fileRef = D928860DADE93645F146BBF1 /* MoonboonTypography.swift */; };
+		E8DB10DBEFBAE0A58E45E510 /* TimelineEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0AEAB05385970CC3E9CC4D /* TimelineEvent.swift */; };
+		ECA6C1A5CAC7CF4A730EB800 /* MoonboonColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88C4EC10C899BAB60B60962 /* MoonboonColors.swift */; };
+		F08D9CA96A8E4CC45F5A3B54 /* icon_add.png in Resources */ = {isa = PBXBuildFile; fileRef = 146944CE1461A0FD970D7858 /* icon_add.png */; };
+		FB1C892F17EBF8215722B954 /* ActiveSessionBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE7277BB7C7A345DF359865 /* ActiveSessionBar.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0075E5B9089BB697BC089141 /* icon_moon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_moon.png; sourceTree = "<group>"; };
+		0917430CEC727F7FE7E76077 /* QuickActionGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickActionGrid.swift; sourceTree = "<group>"; };
+		0CE3F6E1BFA072945E1B0274 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
+		0D775B48FAEC97892DBD3026 /* baby_avatar_src.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = baby_avatar_src.png; sourceTree = "<group>"; };
+		0F84183CDDB4DDE1A70F8BC2 /* Kepler-Std-Display.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Kepler-Std-Display.otf"; sourceTree = "<group>"; };
+		146944CE1461A0FD970D7858 /* icon_add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_add.png; sourceTree = "<group>"; };
+		1717F2228545C27895232981 /* BabyTrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BabyTrackerApp.swift; sourceTree = "<group>"; };
+		1C9376F4E9C0AF6F66F298BD /* TimelineStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineStore.swift; sourceTree = "<group>"; };
+		24DBC1C7631F2AFDD1CF434E /* BabyProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BabyProfileHeader.swift; sourceTree = "<group>"; };
+		3E4471C9B115BAEB2DB887D5 /* icon_wake_src.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_wake_src.png; sourceTree = "<group>"; };
+		476FDD91ED3B6BC18FCD1EF8 /* TimelineTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineTab.swift; sourceTree = "<group>"; };
+		492682DA79727E8FF22339E4 /* WeeklyChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyChart.swift; sourceTree = "<group>"; };
+		52B27196B556A88541BEA446 /* TimelineEventRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineEventRow.swift; sourceTree = "<group>"; };
+		717DFB2DA758CE6CB086393F /* BabyStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BabyStore.swift; sourceTree = "<group>"; };
+		72E7709F9353A05E86C65018 /* BabyProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BabyProfile.swift; sourceTree = "<group>"; };
+		7855B8464C55A966EFFC0950 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		7B0AEAB05385970CC3E9CC4D /* TimelineEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineEvent.swift; sourceTree = "<group>"; };
+		83E37494AAF59356555C3F39 /* SessionPill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionPill.swift; sourceTree = "<group>"; };
+		84DA94A02910C5210BB32BCF /* screenshot_ref.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screenshot_ref.png; sourceTree = "<group>"; };
+		8DFE0F5039ECC0AD19A563FC /* icon_feed_src.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_feed_src.png; sourceTree = "<group>"; };
+		971055D34C3FE54C6BF718D5 /* SleepSummaryCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepSummaryCard.swift; sourceTree = "<group>"; };
+		A7A810C3BB2819EC5F343F64 /* icon_sun.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_sun.png; sourceTree = "<group>"; };
+		A7E45ED22F714A3AD1AD478C /* ActiveSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveSession.swift; sourceTree = "<group>"; };
+		AABCAF24D95D52ED81F00AB3 /* DayTimelineBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayTimelineBar.swift; sourceTree = "<group>"; };
+		B88C4EC10C899BAB60B60962 /* MoonboonColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonboonColors.swift; sourceTree = "<group>"; };
+		C180C42CC67BCCF40E4B2F34 /* icon_wake.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_wake.png; sourceTree = "<group>"; };
+		C4FF66129836DC7D81311A9E /* icon_nap_src.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_nap_src.png; sourceTree = "<group>"; };
+		C79B48A79B99A33DA2833A2C /* baby_avatar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = baby_avatar.png; sourceTree = "<group>"; };
+		C98220FDDAAC7029B18A5889 /* icon_diaper_src.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_diaper_src.png; sourceTree = "<group>"; };
+		CDBDB95C98FD1ED812A3B782 /* icon_diaper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_diaper.png; sourceTree = "<group>"; };
+		D090A6EF57FB0FB36407439E /* BabyTracker.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = BabyTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D10A20F78BED525009EFBBFD /* DevicesTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesTab.swift; sourceTree = "<group>"; };
+		D928860DADE93645F146BBF1 /* MoonboonTypography.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonboonTypography.swift; sourceTree = "<group>"; };
+		DB508D042701800EACB657F0 /* icon_add_src.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_add_src.png; sourceTree = "<group>"; };
+		DB6CBAD166E5A2963BCFF7C9 /* icon_nap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_nap.png; sourceTree = "<group>"; };
+		DCE7277BB7C7A345DF359865 /* ActiveSessionBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveSessionBar.swift; sourceTree = "<group>"; };
+		E2C5FDF802818F4EA0E5CFCA /* ExpandedSessionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandedSessionCard.swift; sourceTree = "<group>"; };
+		E6982DE8DBB1325E1BF96EE2 /* OverviewTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewTab.swift; sourceTree = "<group>"; };
+		F7A88840687EF8C22F6A33F3 /* icon_feed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_feed.png; sourceTree = "<group>"; };
+		F8BFDA3D09B08DCB4043093E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		0CD03DB722D432B4CCEBCBC0 /* State */ = {
+			isa = PBXGroup;
+			children = (
+				717DFB2DA758CE6CB086393F /* BabyStore.swift */,
+				0CE3F6E1BFA072945E1B0274 /* SessionManager.swift */,
+				1C9376F4E9C0AF6F66F298BD /* TimelineStore.swift */,
+			);
+			path = State;
+			sourceTree = "<group>";
+		};
+		14046C0E260CE9B8D8AAF790 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DEAC70D62C8321DDE9F11D14 /* Devices */,
+				5C07A53D91FCDBFEEDFFC1A4 /* Overview */,
+				9EC9E262248777EB7DA973C7 /* SessionBar */,
+				8D7060BF4D2196CFF084C2F0 /* Timeline */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5C07A53D91FCDBFEEDFFC1A4 /* Overview */ = {
+			isa = PBXGroup;
+			children = (
+				E6982DE8DBB1325E1BF96EE2 /* OverviewTab.swift */,
+				971055D34C3FE54C6BF718D5 /* SleepSummaryCard.swift */,
+				492682DA79727E8FF22339E4 /* WeeklyChart.swift */,
+			);
+			path = Overview;
+			sourceTree = "<group>";
+		};
+		6AAF4ED92AD1CFC6D715F291 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0F84183CDDB4DDE1A70F8BC2 /* Kepler-Std-Display.otf */,
+				8BA528F75079A99B6E4058BE /* Images */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		6B82345FF2B107AF3295AA47 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A7E45ED22F714A3AD1AD478C /* ActiveSession.swift */,
+				72E7709F9353A05E86C65018 /* BabyProfile.swift */,
+				7B0AEAB05385970CC3E9CC4D /* TimelineEvent.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		78AE5D6A052E81D650211524 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				B88C4EC10C899BAB60B60962 /* MoonboonColors.swift */,
+				D928860DADE93645F146BBF1 /* MoonboonTypography.swift */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
+		89E7CCED99CC5B6B1F75DDD8 = {
+			isa = PBXGroup;
+			children = (
+				959E9E484E5066BB39C57304 /* BabyTracker */,
+				F2F8633B3CCFD4185ECF635D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8BA528F75079A99B6E4058BE /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				0D775B48FAEC97892DBD3026 /* baby_avatar_src.png */,
+				C79B48A79B99A33DA2833A2C /* baby_avatar.png */,
+				DB508D042701800EACB657F0 /* icon_add_src.png */,
+				146944CE1461A0FD970D7858 /* icon_add.png */,
+				C98220FDDAAC7029B18A5889 /* icon_diaper_src.png */,
+				CDBDB95C98FD1ED812A3B782 /* icon_diaper.png */,
+				8DFE0F5039ECC0AD19A563FC /* icon_feed_src.png */,
+				F7A88840687EF8C22F6A33F3 /* icon_feed.png */,
+				0075E5B9089BB697BC089141 /* icon_moon.png */,
+				C4FF66129836DC7D81311A9E /* icon_nap_src.png */,
+				DB6CBAD166E5A2963BCFF7C9 /* icon_nap.png */,
+				A7A810C3BB2819EC5F343F64 /* icon_sun.png */,
+				3E4471C9B115BAEB2DB887D5 /* icon_wake_src.png */,
+				C180C42CC67BCCF40E4B2F34 /* icon_wake.png */,
+				84DA94A02910C5210BB32BCF /* screenshot_ref.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		8D7060BF4D2196CFF084C2F0 /* Timeline */ = {
+			isa = PBXGroup;
+			children = (
+				24DBC1C7631F2AFDD1CF434E /* BabyProfileHeader.swift */,
+				AABCAF24D95D52ED81F00AB3 /* DayTimelineBar.swift */,
+				0917430CEC727F7FE7E76077 /* QuickActionGrid.swift */,
+				52B27196B556A88541BEA446 /* TimelineEventRow.swift */,
+				476FDD91ED3B6BC18FCD1EF8 /* TimelineTab.swift */,
+			);
+			path = Timeline;
+			sourceTree = "<group>";
+		};
+		959E9E484E5066BB39C57304 /* BabyTracker */ = {
+			isa = PBXGroup;
+			children = (
+				F8BFDA3D09B08DCB4043093E /* Assets.xcassets */,
+				1717F2228545C27895232981 /* BabyTrackerApp.swift */,
+				7855B8464C55A966EFFC0950 /* Info.plist */,
+				6B82345FF2B107AF3295AA47 /* Models */,
+				6AAF4ED92AD1CFC6D715F291 /* Resources */,
+				0CD03DB722D432B4CCEBCBC0 /* State */,
+				78AE5D6A052E81D650211524 /* Theme */,
+				14046C0E260CE9B8D8AAF790 /* Views */,
+			);
+			path = BabyTracker;
+			sourceTree = "<group>";
+		};
+		9EC9E262248777EB7DA973C7 /* SessionBar */ = {
+			isa = PBXGroup;
+			children = (
+				DCE7277BB7C7A345DF359865 /* ActiveSessionBar.swift */,
+				E2C5FDF802818F4EA0E5CFCA /* ExpandedSessionCard.swift */,
+				83E37494AAF59356555C3F39 /* SessionPill.swift */,
+			);
+			path = SessionBar;
+			sourceTree = "<group>";
+		};
+		DEAC70D62C8321DDE9F11D14 /* Devices */ = {
+			isa = PBXGroup;
+			children = (
+				D10A20F78BED525009EFBBFD /* DevicesTab.swift */,
+			);
+			path = Devices;
+			sourceTree = "<group>";
+		};
+		F2F8633B3CCFD4185ECF635D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D090A6EF57FB0FB36407439E /* BabyTracker.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6AF61F330A9B0D10250EAE18 /* BabyTracker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D28C2ED39DC51E97FFB5ED23 /* Build configuration list for PBXNativeTarget "BabyTracker" */;
+			buildPhases = (
+				47A8C8A3B4467F77A3F142D5 /* Sources */,
+				C0CED438F9328989E742D162 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BabyTracker;
+			packageProductDependencies = (
+			);
+			productName = BabyTracker;
+			productReference = D090A6EF57FB0FB36407439E /* BabyTracker.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3FA86235AB0D0FA3B04C600F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 2650;
+				TargetAttributes = {
+					6AF61F330A9B0D10250EAE18 = {
+						DevelopmentTeam = RY2B288BK2;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 022D164CCA56A57F89EAA804 /* Build configuration list for PBXProject "BabyTracker" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 89E7CCED99CC5B6B1F75DDD8;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = F2F8633B3CCFD4185ECF635D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6AF61F330A9B0D10250EAE18 /* BabyTracker */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C0CED438F9328989E742D162 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				83174995A3EB82F303B7DD2A /* Assets.xcassets in Resources */,
+				CB64FB2E4DDD235A1EA73B0F /* Kepler-Std-Display.otf in Resources */,
+				A750B2B9FFE8FD5733A9B8C1 /* baby_avatar.png in Resources */,
+				28855C31648BA412E016B618 /* baby_avatar_src.png in Resources */,
+				F08D9CA96A8E4CC45F5A3B54 /* icon_add.png in Resources */,
+				0FBB19247A0DDD927994E00B /* icon_add_src.png in Resources */,
+				319508AC1E386362ADE73ADB /* icon_diaper.png in Resources */,
+				4CBB6066711A4679C932C8D8 /* icon_diaper_src.png in Resources */,
+				CF2819F5B8B53158EB97D5C1 /* icon_feed.png in Resources */,
+				230AE25EEEDBC8F47D5D56C2 /* icon_feed_src.png in Resources */,
+				1B04CBF837747485ABD468F3 /* icon_moon.png in Resources */,
+				BBEB6373BBC197F397E3DBEC /* icon_nap.png in Resources */,
+				5BB7193B2F7A12987F4EF715 /* icon_nap_src.png in Resources */,
+				60DA4544653760AEC5A0075D /* icon_sun.png in Resources */,
+				33B9A998B6EB08131470EF80 /* icon_wake.png in Resources */,
+				864CB67614506B81A19E28FF /* icon_wake_src.png in Resources */,
+				4D2DCFC1414650BF04B494CD /* screenshot_ref.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		47A8C8A3B4467F77A3F142D5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				396814D8806D2495F27EA8A1 /* ActiveSession.swift in Sources */,
+				FB1C892F17EBF8215722B954 /* ActiveSessionBar.swift in Sources */,
+				70BFBB5CF68ADD06BAF81737 /* BabyProfile.swift in Sources */,
+				BFFBC3207F60273A691E3877 /* BabyProfileHeader.swift in Sources */,
+				33F0828446C82411E1D006AC /* BabyStore.swift in Sources */,
+				2D768F3B5912D9F8C8FD98A7 /* BabyTrackerApp.swift in Sources */,
+				0C194C68D8DCCF5EDB210EE7 /* DayTimelineBar.swift in Sources */,
+				CD97B2CE7B50074DBB4E1D7D /* DevicesTab.swift in Sources */,
+				A0E55112F40DCEEDA5BFCF2F /* ExpandedSessionCard.swift in Sources */,
+				ECA6C1A5CAC7CF4A730EB800 /* MoonboonColors.swift in Sources */,
+				E8BFFAC8FC4D977FE6BFA4E9 /* MoonboonTypography.swift in Sources */,
+				C19AEB26C04F58E947650C52 /* OverviewTab.swift in Sources */,
+				882E987730A0F6F63567297F /* QuickActionGrid.swift in Sources */,
+				A57898BD5347C50DE4AD4FB2 /* SessionManager.swift in Sources */,
+				9E5CE9BA9AF826191E5258EA /* SessionPill.swift in Sources */,
+				17C694CD8F716CBAA6D565A8 /* SleepSummaryCard.swift in Sources */,
+				E8DB10DBEFBAE0A58E45E510 /* TimelineEvent.swift in Sources */,
+				E22EC173ED828A86DB8F2DC4 /* TimelineEventRow.swift in Sources */,
+				51BECDE73E5C10BA44C39747 /* TimelineStore.swift in Sources */,
+				0D0800DF44659F274853A854 /* TimelineTab.swift in Sources */,
+				967691C4636E1D40228EDB6B /* WeeklyChart.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		0DA20E2287A477A659C8322F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = RY2B288BK2;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BabyTracker/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Baby Tracker";
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.moonboon.babytracker.glass;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		105BB4EDD636488927871210 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = RY2B288BK2;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BabyTracker/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Baby Tracker";
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.moonboon.babytracker.glass;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		2902855AD040FDDBF8A531DF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		5130CF16AECE57432D9824FC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		022D164CCA56A57F89EAA804 /* Build configuration list for PBXProject "BabyTracker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5130CF16AECE57432D9824FC /* Debug */,
+				2902855AD040FDDBF8A531DF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		D28C2ED39DC51E97FFB5ED23 /* Build configuration list for PBXNativeTarget "BabyTracker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0DA20E2287A477A659C8322F /* Debug */,
+				105BB4EDD636488927871210 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3FA86235AB0D0FA3B04C600F /* Project object */;
+}

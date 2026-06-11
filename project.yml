@@ -1,0 +1,24 @@
+name: BabyTracker
+options:
+  bundleIdPrefix: com.moonboon.babytracker
+  deploymentTarget:
+    iOS: "26.0"
+  xcodeVersion: "26.5"
+
+targets:
+  BabyTracker:
+    type: application
+    platform: iOS
+    sources:
+      - BabyTracker
+    settings:
+      base:
+        INFOPLIST_FILE: BabyTracker/Info.plist
+        GENERATE_INFOPLIST_FILE: true
+        SWIFT_VERSION: "6.0"
+        PRODUCT_BUNDLE_IDENTIFIER: com.moonboon.babytracker.glass
+        INFOPLIST_KEY_CFBundleDisplayName: "Baby Tracker"
+        INFOPLIST_KEY_UILaunchScreen_Generation: true
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone: UIInterfaceOrientationPortrait
+        CODE_SIGN_STYLE: Automatic
+        DEVELOPMENT_TEAM: RY2B288BK2

@@ -35,7 +35,7 @@ struct TimelineEvent: Identifiable {
             switch self {
             case .wake: return "icon_sun"
             case .nap: return "icon_nap"
-            case .bedtime: return "icon_moon"
+            case .bedtime: return "icon_bedtime"
             case .nightWaking: return "icon_night_waking"
             case .bottle: return "icon_feed"
             case .nursing: return "icon_nursing"

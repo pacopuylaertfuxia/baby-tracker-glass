@@ -2,7 +2,7 @@ import SwiftUI
 
 extension Font {
     static func kepler(_ size: CGFloat) -> Font {
-        .custom("Kepler-Std-Display", size: size)
+        .custom("KeplerStd-Disp", size: size)
     }
 
     static var keplerLargeTitle: Font { .kepler(42) }

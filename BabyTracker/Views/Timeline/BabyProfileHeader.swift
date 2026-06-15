@@ -1,6 +1,6 @@
 import SwiftUI
 
-/// Profile header — avatar, name, age, today's date
+/// Profile header — avatar, name, age, date with calendar chevron
 struct BabyProfileHeader: View {
     let baby: BabyProfile
 
@@ -26,15 +26,26 @@ struct BabyProfileHeader: View {
 
             Spacer()
 
-            // Today
-            VStack(alignment: .trailing, spacing: 1) {
-                Text(Date.now.formatted(.dateTime.weekday(.wide)))
-                    .font(.caption.weight(.medium))
-                    .foregroundStyle(.moonClay)
-                Text(Date.now.formatted(.dateTime.month(.abbreviated).day()))
-                    .font(.caption2)
-                    .foregroundStyle(.moonOlive)
+            // Date + calendar chevron
+            Button {
+                // TODO: open calendar view
+            } label: {
+                HStack(spacing: 6) {
+                    VStack(alignment: .trailing, spacing: 1) {
+                        Text(Date.now.formatted(.dateTime.weekday(.wide)))
+                            .font(.caption.weight(.medium))
+                            .foregroundStyle(.moonClay)
+                        Text(Date.now.formatted(.dateTime.month(.abbreviated).day()))
+                            .font(.caption2)
+                            .foregroundStyle(.moonOlive)
+                    }
+
+                    Image(systemName: "chevron.up.chevron.down")
+                        .font(.system(size: 12, weight: .semibold))
+                        .foregroundStyle(.moonStone)
+                }
             }
+            .buttonStyle(.plain)
         }
         .padding(.horizontal, 20)
         .padding(.top, 8)

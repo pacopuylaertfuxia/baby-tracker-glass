@@ -3,6 +3,7 @@ import SwiftUI
 /// Full-width event feed — no calendar grid, just clean event cards sorted by time
 struct CalendarDayView: View {
     @Environment(TimelineStore.self) private var store
+    @State private var eventToDelete: TimelineEvent?
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -25,9 +26,37 @@ struct CalendarDayView: View {
             VStack(spacing: 10) {
                 ForEach(visibleEvents) { event in
                     eventRow(event)
+                        .contextMenu {
+                            Button(role: .destructive) {
+                                eventToDelete = event
+                            } label: {
+                                Label("Remove", systemImage: "trash")
+                            }
+                        }
                 }
             }
             .padding(.horizontal, 16)
+        }
+        .confirmationDialog(
+            "Remove this event?",
+            isPresented: .init(
+                get: { eventToDelete != nil },
+                set: { if !$0 { eventToDelete = nil } }
+            ),
+            titleVisibility: .visible
+        ) {
+            Button("Remove", role: .destructive) {
+                if let event = eventToDelete {
+                    withAnimation(.easeOut(duration: 0.3)) {
+                        store.deleteEvent(id: event.id)
+                    }
+                }
+                eventToDelete = nil
+            }
+        } message: {
+            if let event = eventToDelete {
+                Text("Delete \"\(event.title)\" at \(formatTime(event.timestamp))?")
+            }
         }
     }
 
@@ -99,6 +128,10 @@ struct CalendarDayView: View {
                 .fill(.moonWhite)
                 .shadow(color: .moonBlack.opacity(0.04), radius: 10, y: 4)
         }
+        .transition(.asymmetric(
+            insertion: .scale.combined(with: .opacity),
+            removal: .move(edge: .trailing).combined(with: .opacity)
+        ))
     }
 
     // MARK: - Data

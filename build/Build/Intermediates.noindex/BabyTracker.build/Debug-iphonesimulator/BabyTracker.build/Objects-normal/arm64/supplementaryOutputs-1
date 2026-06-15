@@ -1,0 +1,30 @@
+{
+  "/Users/pacopuylaert/baby-tracker-glass/BabyTracker/Models/ActiveSession.swift" : {
+    "const-values" : "/Users/pacopuylaert/baby-tracker-glass/build/Build/Intermediates.noindex/BabyTracker.build/Debug-iphonesimulator/BabyTracker.build/Objects-normal/arm64/ActiveSession.swiftconstvalues",
+    "dependencies" : "/Users/pacopuylaert/baby-tracker-glass/build/Build/Intermediates.noindex/BabyTracker.build/Debug-iphonesimulator/BabyTracker.build/Objects-normal/arm64/ActiveSession.d",
+    "diagnostics" : "/Users/pacopuylaert/baby-tracker-glass/build/Build/Intermediates.noindex/BabyTracker.build/Debug-iphonesimulator/BabyTracker.build/Objects-normal/arm64/ActiveSession.dia",
+    "object" : "/Users/pacopuylaert/baby-tracker-glass/build/Build/Intermediates.noindex/BabyTracker.build/Debug-iphonesimulator/BabyTracker.build/Objects-normal/arm64/ActiveSession.o",
+    "swift-dependencies" : "/Users/pacopuylaert/baby-tracker-glass/build/Build/Intermediates.noindex/BabyTracker.build/Debug-iphonesimulator/BabyTracker.build/Objects-normal/arm64/ActiveSession.swiftdeps"
+  },
+  "/Users/pacopuylaert/baby-tracker-glass/BabyTracker/Models/BabyProfile.swift" : {
+    "const-values" : "/Users/pacopuylaert/baby-tracker-glass/build/Build/Intermediates.noindex/BabyTracker.build/Debug-iphonesimulator/BabyTracker.build/Objects-normal/arm64/BabyProfile.swiftconstvalues",
+    "dependencies" : "/Users/pacopuylaert/baby-tracker-glass/build/Build/Intermediates.noindex/BabyTracker.build/Debug-iphonesimulator/BabyTracker.build/Objects-normal/arm64/BabyProfile.d",
+    "diagnostics" : "/Users/pacopuylaert/baby-tracker-glass/build/Build/Intermediates.noindex/BabyTracker.build/Debug-iphonesimulator/BabyTracker.build/Objects-normal/arm64/BabyProfile.dia",
+    "object" : "/Users/pacopuylaert/baby-tracker-glass/build/Build/Intermediates.noindex/BabyTracker.build/Debug-iphonesimulator/BabyTracker.build/Objects-normal/arm64/BabyProfile.o",
+    "swift-dependencies" : "/Users/pacopuylaert/baby-tracker-glass/build/Build/Intermediates.noindex/BabyTracker.build/Debug-iphonesimulator/BabyTracker.build/Objects-normal/arm64/BabyProfile.swiftdeps"
+  },
+  "/Users/pacopuylaert/baby-tracker-glass/BabyTracker/Views/SessionBar/ActiveSessionBar.swift" : {
+    "const-values" : "/Users/pacopuylaert/baby-tracker-glass/build/Build/Intermediates.noindex/BabyTracker.build/Debug-iphonesimulator/BabyTracker.build/Objects-normal/arm64/ActiveSessionBar.swiftconstvalues",
+    "dependencies" : "/Users/pacopuylaert/baby-tracker-glass/build/Build/Intermediates.noindex/BabyTracker.build/Debug-iphonesimulator/BabyTracker.build/Objects-normal/arm64/ActiveSessionBar.d",
+    "diagnostics" : "/Users/pacopuylaert/baby-tracker-glass/build/Build/Intermediates.noindex/BabyTracker.build/Debug-iphonesimulator/BabyTracker.build/Objects-normal/arm64/ActiveSessionBar.dia",
+    "object" : "/Users/pacopuylaert/baby-tracker-glass/build/Build/Intermediates.noindex/BabyTracker.build/Debug-iphonesimulator/BabyTracker.build/Objects-normal/arm64/ActiveSessionBar.o",
+    "swift-dependencies" : "/Users/pacopuylaert/baby-tracker-glass/build/Build/Intermediates.noindex/BabyTracker.build/Debug-iphonesimulator/BabyTracker.build/Objects-normal/arm64/ActiveSessionBar.swiftdeps"
+  },
+  "/Users/pacopuylaert/baby-tracker-glass/BabyTracker/Views/Timeline/BabyProfileHeader.swift" : {
+    "const-values" : "/Users/pacopuylaert/baby-tracker-glass/build/Build/Intermediates.noindex/BabyTracker.build/Debug-iphonesimulator/BabyTracker.build/Objects-normal/arm64/BabyProfileHeader.swiftconstvalues",
+    "dependencies" : "/Users/pacopuylaert/baby-tracker-glass/build/Build/Intermediates.noindex/BabyTracker.build/Debug-iphonesimulator/BabyTracker.build/Objects-normal/arm64/BabyProfileHeader.d",
+    "diagnostics" : "/Users/pacopuylaert/baby-tracker-glass/build/Build/Intermediates.noindex/BabyTracker.build/Debug-iphonesimulator/BabyTracker.build/Objects-normal/arm64/BabyProfileHeader.dia",
+    "object" : "/Users/pacopuylaert/baby-tracker-glass/build/Build/Intermediates.noindex/BabyTracker.build/Debug-iphonesimulator/BabyTracker.build/Objects-normal/arm64/BabyProfileHeader.o",
+    "swift-dependencies" : "/Users/pacopuylaert/baby-tracker-glass/build/Build/Intermediates.noindex/BabyTracker.build/Debug-iphonesimulator/BabyTracker.build/Objects-normal/arm64/BabyProfileHeader.swiftdeps"
+  }
+}

@@ -6,5 +6,9 @@
 	<array>
 		<string>Kepler-Std-Display.otf</string>
 	</array>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Record voice notes for night wake logs</string>
+	<key>NSSupportsLiveActivities</key>
+	<true/>
 </dict>
 </plist>

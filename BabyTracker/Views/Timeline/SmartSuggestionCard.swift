@@ -72,24 +72,9 @@ struct SmartSuggestionCard: View {
     private var currentSuggestion: Suggestion? {
         if sessionManager.activeNap != nil { return nil }
 
-        let feedElapsed = store.timeSince([.bottle, .nursing, .pumping, .solids])
         let sleepElapsed = store.timeSince([.nap, .wake])
-        let diaperElapsed = store.timeSince([.diaper])
 
-        // Feed overdue (> 3h)
-        if let feed = feedElapsed, feed > 3 * 3600 {
-            let hours = Int(feed) / 3600
-            return Suggestion(
-                icon: "icon_feed",
-                headline: "Feeding time?",
-                detail: "Last fed \(hours)h ago",
-                accent: .moonFood,
-                actionLabel: "Log feed",
-                action: { store.logEvent(.bottle) }
-            )
-        }
-
-        // Nap window (awake > 2h)
+        // Nap window (awake > 2h) — the one scientifically defensible threshold
         if let sleep = sleepElapsed, sleep > 2 * 3600 {
             let hours = Int(sleep) / 3600
             let mins = (Int(sleep) % 3600) / 60
@@ -98,32 +83,6 @@ struct SmartSuggestionCard: View {
                 headline: "Nap window approaching",
                 detail: "Awake \(hours)h \(mins)m — watch for sleepy cues",
                 accent: .moonSleep,
-                actionLabel: nil,
-                action: nil
-            )
-        }
-
-        // Diaper check (> 2.5h)
-        if let diaper = diaperElapsed, diaper > 2.5 * 3600 {
-            return Suggestion(
-                icon: "icon_diaper",
-                headline: "Diaper check?",
-                detail: "Last change was a while ago",
-                accent: .moonChange,
-                actionLabel: "Log",
-                action: { store.logEvent(.diaper) }
-            )
-        }
-
-        // Default summary
-        let feedCount = store.countToday([.bottle, .nursing, .pumping, .solids])
-        let sleepMins = Int(store.totalSleepToday / 60)
-        if feedCount > 0 || sleepMins > 0 {
-            return Suggestion(
-                icon: "icon_sun",
-                headline: "Good day so far",
-                detail: "\(feedCount) feeds · \(sleepMins)m sleep",
-                accent: .moonWake,
                 actionLabel: nil,
                 action: nil
             )

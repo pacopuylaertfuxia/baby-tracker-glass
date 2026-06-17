@@ -57,18 +57,6 @@ struct DailyReportDetail: View {
                     dayBreakdown
                 }
 
-                // Section 2 — Insights
-                Spacer().frame(height: 32)
-                sectionHeader("INSIGHTS")
-                Spacer().frame(height: 12)
-                insightsSection
-
-                // Section 3 — Recommended Reading
-                Spacer().frame(height: 32)
-                sectionHeader("RECOMMENDED READING")
-                Spacer().frame(height: 12)
-                readingSection
-
                 Spacer(minLength: 40)
             }
         }

@@ -43,10 +43,6 @@ struct TimelineTab: View {
                 LastNightCard()
                     .padding(.top, 14)
 
-                // ── Daily Rings ──
-                DailyRings()
-                    .padding(.top, 14)
-
                 // ── Night Wakes ──
                 NightWakesCard()
                     .padding(.top, 14)

@@ -67,6 +67,15 @@
 		F08D9CA96A8E4CC45F5A3B54 /* icon_add.png in Resources */ = {isa = PBXBuildFile; fileRef = 146944CE1461A0FD970D7858 /* icon_add.png */; };
 		FB1C892F17EBF8215722B954 /* ActiveSessionBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE7277BB7C7A345DF359865 /* ActiveSessionBar.swift */; };
 		FBE3A6EEE6E57AACDC4FAC1B /* LastNightCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4183B170A362C583642B0A /* LastNightCard.swift */; };
+		89E128BDA98EB92F3D4D6AC3 /* DayNightMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB0147C3FA0F6643FB2B684 /* DayNightMode.swift */; };
+		812F7A74D9DA0B0BEE2FCFA8 /* CircularClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00301A0EF0195825B7E3E82 /* CircularClockView.swift */; };
+		84CC4476431486097B0B00D2 /* PredictionCountdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0866C2BB2158584D66F74A2 /* PredictionCountdown.swift */; };
+		8F1B34A45DB335E918CC5BBC /* EventLoggingSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755485F48508665CA254D9D5 /* EventLoggingSheet.swift */; };
+		E32A6A376E2362C8173E9765 /* ScheduleTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF3DE6FFD5855A712CEB45C /* ScheduleTab.swift */; };
+		64F5559C5B3E47C74455114D /* TrackerTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096175B73E19D0C3009FFD1B /* TrackerTab.swift */; };
+		0E26F4E9386695D0171A5542 /* SoundsTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = D735C4EB2B98CF459A33A947 /* SoundsTab.swift */; };
+		D4DC611801A93969AD48604B /* TrendsTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4C0935747E1B6025B37CEE /* TrendsTab.swift */; };
+		C2FC6A0B4961396C2F497100 /* YouTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6857262CCE0319966E2503 /* YouTab.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -156,6 +165,15 @@
 		F7A88840687EF8C22F6A33F3 /* icon_feed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_feed.png; sourceTree = "<group>"; };
 		F8BFDA3D09B08DCB4043093E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FC4183B170A362C583642B0A /* LastNightCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastNightCard.swift; sourceTree = "<group>"; };
+		CAB0147C3FA0F6643FB2B684 /* DayNightMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayNightMode.swift; sourceTree = "<group>"; };
+		F00301A0EF0195825B7E3E82 /* CircularClockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularClockView.swift; sourceTree = "<group>"; };
+		F0866C2BB2158584D66F74A2 /* PredictionCountdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictionCountdown.swift; sourceTree = "<group>"; };
+		755485F48508665CA254D9D5 /* EventLoggingSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventLoggingSheet.swift; sourceTree = "<group>"; };
+		DFF3DE6FFD5855A712CEB45C /* ScheduleTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTab.swift; sourceTree = "<group>"; };
+		096175B73E19D0C3009FFD1B /* TrackerTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerTab.swift; sourceTree = "<group>"; };
+		D735C4EB2B98CF459A33A947 /* SoundsTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundsTab.swift; sourceTree = "<group>"; };
+		3B4C0935747E1B6025B37CEE /* TrendsTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendsTab.swift; sourceTree = "<group>"; };
+		EC6857262CCE0319966E2503 /* YouTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTab.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -163,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				717DFB2DA758CE6CB086393F /* BabyStore.swift */,
+				CAB0147C3FA0F6643FB2B684 /* DayNightMode.swift */,
 				CE8D4C9AC1BB4083C474E3B5 /* LiveActivityManager.swift */,
 				E4802C0923C1150B56C4524A /* NapReminderService.swift */,
 				0CE3F6E1BFA072945E1B0274 /* SessionManager.swift */,
@@ -177,10 +196,58 @@
 			children = (
 				DEAC70D62C8321DDE9F11D14 /* Devices */,
 				5C07A53D91FCDBFEEDFFC1A4 /* Overview */,
+				AA0000000000000000000001 /* Schedule */,
 				9EC9E262248777EB7DA973C7 /* SessionBar */,
+				AA0000000000000000000002 /* Sounds */,
 				8D7060BF4D2196CFF084C2F0 /* Timeline */,
+				AA0000000000000000000003 /* Tracker */,
+				AA0000000000000000000004 /* Trends */,
+				AA0000000000000000000005 /* You */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		AA0000000000000000000001 /* Schedule */ = {
+			isa = PBXGroup;
+			children = (
+				F00301A0EF0195825B7E3E82 /* CircularClockView.swift */,
+				755485F48508665CA254D9D5 /* EventLoggingSheet.swift */,
+				F0866C2BB2158584D66F74A2 /* PredictionCountdown.swift */,
+				DFF3DE6FFD5855A712CEB45C /* ScheduleTab.swift */,
+			);
+			path = Schedule;
+			sourceTree = "<group>";
+		};
+		AA0000000000000000000002 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				D735C4EB2B98CF459A33A947 /* SoundsTab.swift */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
+		AA0000000000000000000003 /* Tracker */ = {
+			isa = PBXGroup;
+			children = (
+				096175B73E19D0C3009FFD1B /* TrackerTab.swift */,
+			);
+			path = Tracker;
+			sourceTree = "<group>";
+		};
+		AA0000000000000000000004 /* Trends */ = {
+			isa = PBXGroup;
+			children = (
+				3B4C0935747E1B6025B37CEE /* TrendsTab.swift */,
+			);
+			path = Trends;
+			sourceTree = "<group>";
+		};
+		AA0000000000000000000005 /* You */ = {
+			isa = PBXGroup;
+			children = (
+				EC6857262CCE0319966E2503 /* YouTab.swift */,
+			);
+			path = You;
 			sourceTree = "<group>";
 		};
 		2A34C5DC1C8B207F3ED6C6DF /* SleepActivityWidget */ = {
@@ -497,6 +564,15 @@
 				0D0800DF44659F274853A854 /* TimelineTab.swift in Sources */,
 				16855F1505F762A1501B79EC /* VoiceMemoRecorder.swift in Sources */,
 				967691C4636E1D40228EDB6B /* WeeklyChart.swift in Sources */,
+				89E128BDA98EB92F3D4D6AC3 /* DayNightMode.swift in Sources */,
+				812F7A74D9DA0B0BEE2FCFA8 /* CircularClockView.swift in Sources */,
+				84CC4476431486097B0B00D2 /* PredictionCountdown.swift in Sources */,
+				8F1B34A45DB335E918CC5BBC /* EventLoggingSheet.swift in Sources */,
+				E32A6A376E2362C8173E9765 /* ScheduleTab.swift in Sources */,
+				64F5559C5B3E47C74455114D /* TrackerTab.swift in Sources */,
+				0E26F4E9386695D0171A5542 /* SoundsTab.swift in Sources */,
+				D4DC611801A93969AD48604B /* TrendsTab.swift in Sources */,
+				C2FC6A0B4961396C2F497100 /* YouTab.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

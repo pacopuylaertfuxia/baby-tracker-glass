@@ -5,6 +5,7 @@ struct BabyTrackerApp: App {
     @State private var sessionManager = SessionManager()
     @State private var timelineStore = TimelineStore()
     @State private var babyStore = BabyStore()
+    @State private var dayNightMode = DayNightMode()
     @State private var napReminder: NapReminderService?
 
     var body: some Scene {
@@ -13,6 +14,7 @@ struct BabyTrackerApp: App {
                 .environment(sessionManager)
                 .environment(timelineStore)
                 .environment(babyStore)
+                .environment(dayNightMode)
                 .onAppear {
                     sessionManager.babyName = babyStore.baby.name
                     if napReminder == nil {
@@ -32,28 +34,28 @@ struct BabyTrackerApp: App {
 }
 
 enum AppTab: Hashable {
-    case timeline, devices, add
+    case schedule, tracker, add, sounds, trends, you
 }
 
 struct ContentView: View {
     @Environment(SessionManager.self) private var sessionManager
     @Environment(TimelineStore.self) private var timelineStore
-    @State private var selectedTab: AppTab = .timeline
-    @State private var showTrackingSheet = false
-    @State private var showBedtimeScreen = false
+    @Environment(DayNightMode.self) private var dayNightMode
+    @State private var selectedTab: AppTab = .schedule
     @State private var showNapScreen = false
+    @State private var showTrackingSheet = false
 
     var body: some View {
         TabView(selection: $selectedTab) {
-            Tab("Timeline", systemImage: "clock.arrow.trianglehead.counterclockwise.rotate.90", value: .timeline) {
+            Tab("Schedule", systemImage: "clock.fill", value: .schedule) {
                 NavigationStack {
-                    TimelineTab()
+                    ScheduleTab()
                 }
             }
 
-            Tab("Devices", systemImage: "sensor.fill", value: .devices) {
+            Tab("Tracker", systemImage: "list.bullet", value: .tracker) {
                 NavigationStack {
-                    DevicesTab()
+                    TrackerTab()
                 }
             }
 
@@ -62,12 +64,25 @@ struct ContentView: View {
             } label: {
                 Label("Add", systemImage: "plus")
             }
+
+            Tab("Sounds", systemImage: "speaker.wave.2.fill", value: .sounds) {
+                NavigationStack {
+                    SoundsTab()
+                }
+            }
+
+            Tab("Trends", systemImage: "chart.line.uptrend.xyaxis", value: .trends) {
+                NavigationStack {
+                    TrendsTab()
+                }
+            }
+
+            Tab("You", systemImage: "person.fill", value: .you) {
+                NavigationStack {
+                    YouTab()
+                }
+            }
         }
-        .modifier(BottomAccessoryModifier(
-            isEnabled: sessionManager.hasActiveSessions,
-            onOpenNapScreen: { showNapScreen = true },
-            onOpenBedtimeScreen: { showBedtimeScreen = true }
-        ))
         .tabBarMinimizeBehavior(.onScrollDown)
         .tint(.moonClay)
         .onChange(of: selectedTab) { old, new in
@@ -77,23 +92,13 @@ struct ContentView: View {
             }
         }
         .sheet(isPresented: $showTrackingSheet) {
-            TrackingSheet()
+            EventLoggingSheet()
                 .presentationDetents([.medium, .large])
                 .presentationDragIndicator(.visible)
-                .presentationBackground(.ultraThinMaterial)
-        }
-        .fullScreenCover(isPresented: $showBedtimeScreen) {
-            SleepTrackingScreen(mode: .bedtime)
+                .presentationBackground(.moonCreme)
         }
         .fullScreenCover(isPresented: $showNapScreen) {
             SleepTrackingScreen(mode: .nap)
-        }
-        .onChange(of: sessionManager.activeBedtime != nil) { _, hasBedtime in
-            if hasBedtime {
-                showBedtimeScreen = true
-            } else {
-                showBedtimeScreen = false
-            }
         }
         .onChange(of: sessionManager.activeNap != nil) { _, hasNap in
             if hasNap && !showNapScreen {
@@ -105,29 +110,7 @@ struct ContentView: View {
     }
 }
 
-// MARK: - Availability Wrapper
-
-struct BottomAccessoryModifier: ViewModifier {
-    let isEnabled: Bool
-    var onOpenNapScreen: (() -> Void)?
-    var onOpenBedtimeScreen: (() -> Void)?
-
-    func body(content: Content) -> some View {
-        if #available(iOS 26.1, *) {
-            content
-                .tabViewBottomAccessory(isEnabled: isEnabled) {
-                    SessionAccessoryContent(
-                        onOpenNapScreen: onOpenNapScreen,
-                        onOpenBedtimeScreen: onOpenBedtimeScreen
-                    )
-                }
-        } else {
-            content
-        }
-    }
-}
-
-// MARK: - Tracking Sheet
+// MARK: - Tracking Sheet (kept for backward compatibility)
 
 struct TrackingSheet: View {
     @Environment(SessionManager.self) private var sessionManager

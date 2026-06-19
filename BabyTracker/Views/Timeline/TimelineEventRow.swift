@@ -1,69 +1,67 @@
 import SwiftUI
 
-/// Frosted glass event card — 3D icon from Figma, event title, time pills
+/// Event card — icon, title, subtitle, time pill
 struct TimelineEventRow: View {
     let event: TimelineEvent
     var isDashed: Bool = false
 
     var body: some View {
         HStack(spacing: 12) {
-            // Icon from asset catalog (fallback to SF Symbol)
+            // Icon
             if let imageName = event.type.imageName {
                 Image(imageName)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 40, height: 40)
+                    .frame(width: 36, height: 36)
             } else {
                 Image(systemName: event.type.sfSymbol)
-                    .font(.title2)
+                    .font(.title3)
                     .foregroundStyle(.moonClay)
-                    .frame(width: 40, height: 40)
+                    .frame(width: 36, height: 36)
             }
 
-            // Event name
+            // Text
             VStack(alignment: .leading, spacing: 2) {
                 Text(event.title)
-                    .font(.body.weight(.medium))  // 17pt — Apple HIG body
+                    .font(.body.weight(.medium))
                     .foregroundStyle(.moonObsidian)
                 if let subtitle = event.subtitle {
                     Text(subtitle)
-                        .font(.subheadline)  // 15pt
+                        .font(.caption)
                         .foregroundStyle(.moonOlive)
                 }
             }
 
             Spacer()
 
-            // Time pill(s)
-            HStack(spacing: 4) {
-                timePillView(event.timestamp)
-
-                if let end = event.endTime {
-                    Text("–")
-                        .font(.subheadline)
-                        .foregroundStyle(.moonStone)
-                    timePillView(end)
+            // Time
+            if !isDashed {
+                HStack(spacing: 3) {
+                    timePillView(event.timestamp)
+                    if let end = event.endTime {
+                        Text("–")
+                            .font(.caption)
+                            .foregroundStyle(.moonStone)
+                        timePillView(end)
+                    }
                 }
             }
         }
-        .padding(.horizontal, 16)
-        .padding(.vertical, 12)
+        .padding(.horizontal, 14)
+        .padding(.vertical, 11)
         .background {
             if isDashed {
-                RoundedRectangle(cornerRadius: 20)
-                    .fill(.white.opacity(0.5))
+                RoundedRectangle(cornerRadius: 16)
+                    .fill(.moonCardBg.opacity(0.4))
                     .overlay(
-                        RoundedRectangle(cornerRadius: 20)
-                            .strokeBorder(style: StrokeStyle(lineWidth: 1.5, dash: [6, 4]))
+                        RoundedRectangle(cornerRadius: 16)
+                            .strokeBorder(style: StrokeStyle(lineWidth: 1, dash: [5, 4]))
                             .foregroundStyle(.moonApricot)
                     )
             } else {
-                RoundedRectangle(cornerRadius: 20)
-                    .fill(.white.opacity(0.5))
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 20)
-                            .strokeBorder(.moonCreme, lineWidth: 0.5)
-                    )
+                RoundedRectangle(cornerRadius: 16)
+                    .fill(.moonCardBg)
+                    .shadow(color: .moonBlack.opacity(0.03), radius: 6, y: 2)
             }
         }
     }
@@ -76,16 +74,15 @@ struct TimelineEventRow: View {
 
         return HStack(spacing: 2) {
             Text(String(format: "%d:%02d", displayHour, minute))
-                .font(.subheadline.weight(.medium))  // 15pt
+                .font(.caption.weight(.medium))
                 .monospacedDigit()
             Text(ampm)
-                .font(.footnote)  // 13pt
-                .opacity(0.7)
+                .font(.caption2)
+                .opacity(0.6)
         }
         .foregroundStyle(.moonOlive)
-        .padding(.horizontal, 10)
-        .padding(.vertical, 5)
-        .background(.white, in: Capsule())
-        .shadow(color: .black.opacity(0.06), radius: 8, y: 2)
+        .padding(.horizontal, 8)
+        .padding(.vertical, 4)
+        .background(.moonOverlay.opacity(0.06), in: Capsule())
     }
 }

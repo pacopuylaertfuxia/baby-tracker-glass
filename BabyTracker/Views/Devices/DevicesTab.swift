@@ -107,7 +107,7 @@ struct DevicesTab: View {
             }
         }
         .padding(20)
-        .background(.moonWhite, in: RoundedRectangle(cornerRadius: 24))
+        .background(.moonCardBg, in: RoundedRectangle(cornerRadius: 24))
         .padding(.horizontal, 16)
     }
 }

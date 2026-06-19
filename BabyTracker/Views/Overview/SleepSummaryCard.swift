@@ -26,10 +26,10 @@ struct SleepSummaryCard: View {
                 .foregroundStyle(.moonClay)
             Text(value)
                 .font(.keplerStat)
-                .foregroundStyle(.primary)
+                .foregroundStyle(.moonObsidian)
             Text(label)
                 .font(.footnote)
-                .foregroundStyle(.secondary)
+                .foregroundStyle(.moonOlive)
         }
         .frame(maxWidth: .infinity)
     }

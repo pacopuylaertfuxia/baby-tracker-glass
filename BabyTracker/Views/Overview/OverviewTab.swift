@@ -21,7 +21,7 @@ struct OverviewTab: View {
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(20)
-                .background(.moonWhite, in: RoundedRectangle(cornerRadius: 24))
+                .background(.moonCardBg, in: RoundedRectangle(cornerRadius: 24))
                 .padding(.horizontal, 16)
 
                 Spacer(minLength: 120)

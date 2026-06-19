@@ -85,11 +85,12 @@ struct TrackingSheet: View {
 
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 24) {
+            VStack(alignment: .leading, spacing: 32) {
+                // Header
                 Text("Track")
-                    .font(.title2.weight(.bold))
+                    .font(.kepler(32))
                     .foregroundStyle(.moonObsidian)
-                    .padding(.horizontal, 20)
+                    .padding(.horizontal, 24)
 
                 // Sleep
                 trackingSection("Sleep", types: sleepTypes)
@@ -100,26 +101,26 @@ struct TrackingSheet: View {
                 // Care
                 trackingSection("Care", types: careTypes)
 
-                Spacer(minLength: 20)
+                Spacer(minLength: 30)
             }
-            .padding(.top, 8)
+            .padding(.top, 12)
         }
     }
 
     private func trackingSection(_ title: String, types: [TimelineEvent.EventType]) -> some View {
-        VStack(alignment: .leading, spacing: 12) {
+        VStack(alignment: .leading, spacing: 14) {
             Text(title)
-                .font(.footnote.weight(.semibold))
-                .foregroundStyle(.moonOlive)
+                .font(.system(size: 14, weight: .semibold))
+                .foregroundStyle(.moonClay)
                 .textCase(.uppercase)
-                .padding(.horizontal, 20)
+                .tracking(0.8)
+                .padding(.horizontal, 24)
 
             LazyVGrid(columns: [
-                GridItem(.flexible(), spacing: 12),
-                GridItem(.flexible(), spacing: 12),
-                GridItem(.flexible(), spacing: 12),
-                GridItem(.flexible(), spacing: 12)
-            ], spacing: 12) {
+                GridItem(.flexible(), spacing: 10),
+                GridItem(.flexible(), spacing: 10),
+                GridItem(.flexible(), spacing: 10)
+            ], spacing: 10) {
                 ForEach(types, id: \.rawValue) { type in
                     trackingButton(type)
                 }
@@ -132,27 +133,27 @@ struct TrackingSheet: View {
         Button {
             trackEvent(type)
         } label: {
-            VStack(spacing: 8) {
+            VStack(spacing: 10) {
                 if let imageName = type.imageName {
                     Image(imageName)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 36, height: 36)
+                        .frame(width: 56, height: 56)
                 } else {
                     Image(systemName: type.sfSymbol)
-                        .font(.title2)
+                        .font(.system(size: 28))
                         .foregroundStyle(.moonClay)
-                        .frame(width: 36, height: 36)
+                        .frame(width: 56, height: 56)
                 }
 
                 Text(type.displayName)
-                    .font(.caption.weight(.medium))
+                    .font(.system(size: 14, weight: .medium))
                     .foregroundStyle(.moonObsidian)
                     .lineLimit(1)
-                    .minimumScaleFactor(0.8)
+                    .minimumScaleFactor(0.75)
             }
             .frame(maxWidth: .infinity)
-            .frame(height: 80)
+            .frame(height: 110)
         }
         .buttonStyle(.glass)
         .disabled(type == .nap && sessionManager.activeNap != nil)

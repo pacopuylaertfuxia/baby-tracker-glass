@@ -7,7 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D381705507EDD57D4BA60DE /* DailyRings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02818FEEBCDD1D76E02A353F /* DailyRings.swift */; };
+		SMARTSG01 /* SmartSuggestionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = SMARTSG00 /* SmartSuggestionCard.swift */; };
+		TSPILLS01 /* TimeSincePills.swift in Sources */ = {isa = PBXBuildFile; fileRef = TSPILLS00 /* TimeSincePills.swift */; };
 		0C194C68D8DCCF5EDB210EE7 /* DayTimelineBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABCAF24D95D52ED81F00AB3 /* DayTimelineBar.swift */; };
+		CA1DAY0000000001CALENDAR /* CalendarDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1DAY0000000000CALENDAR /* CalendarDayView.swift */; };
+		NW1CARD000000000000000B /* NightWakesCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = NW1CARD000000000000000A /* NightWakesCard.swift */; };
 		0D0800DF44659F274853A854 /* TimelineTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476FDD91ED3B6BC18FCD1EF8 /* TimelineTab.swift */; };
 		0FBB19247A0DDD927994E00B /* icon_add_src.png in Resources */ = {isa = PBXBuildFile; fileRef = DB508D042701800EACB657F0 /* icon_add_src.png */; };
 		17C694CD8F716CBAA6D565A8 /* SleepSummaryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 971055D34C3FE54C6BF718D5 /* SleepSummaryCard.swift */; };
@@ -48,6 +53,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		02818FEEBCDD1D76E02A353F /* DailyRings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRings.swift; sourceTree = "<group>"; };
 		0075E5B9089BB697BC089141 /* icon_moon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_moon.png; sourceTree = "<group>"; };
 		0917430CEC727F7FE7E76077 /* QuickActionGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickActionGrid.swift; sourceTree = "<group>"; };
 		0CE3F6E1BFA072945E1B0274 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
@@ -58,6 +64,8 @@
 		1C9376F4E9C0AF6F66F298BD /* TimelineStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineStore.swift; sourceTree = "<group>"; };
 		24DBC1C7631F2AFDD1CF434E /* BabyProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BabyProfileHeader.swift; sourceTree = "<group>"; };
 		3E4471C9B115BAEB2DB887D5 /* icon_wake_src.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_wake_src.png; sourceTree = "<group>"; };
+		TSPILLS00 /* TimeSincePills.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSincePills.swift; sourceTree = "<group>"; };
+		SMARTSG00 /* SmartSuggestionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartSuggestionCard.swift; sourceTree = "<group>"; };
 		476FDD91ED3B6BC18FCD1EF8 /* TimelineTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineTab.swift; sourceTree = "<group>"; };
 		492682DA79727E8FF22339E4 /* WeeklyChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyChart.swift; sourceTree = "<group>"; };
 		52B27196B556A88541BEA446 /* TimelineEventRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineEventRow.swift; sourceTree = "<group>"; };
@@ -72,6 +80,8 @@
 		A7A810C3BB2819EC5F343F64 /* icon_sun.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_sun.png; sourceTree = "<group>"; };
 		A7E45ED22F714A3AD1AD478C /* ActiveSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveSession.swift; sourceTree = "<group>"; };
 		AABCAF24D95D52ED81F00AB3 /* DayTimelineBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayTimelineBar.swift; sourceTree = "<group>"; };
+		CA1DAY0000000000CALENDAR /* CalendarDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDayView.swift; sourceTree = "<group>"; };
+		NW1CARD000000000000000A /* NightWakesCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NightWakesCard.swift; sourceTree = "<group>"; };
 		B88C4EC10C899BAB60B60962 /* MoonboonColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonboonColors.swift; sourceTree = "<group>"; };
 		C180C42CC67BCCF40E4B2F34 /* icon_wake.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_wake.png; sourceTree = "<group>"; };
 		C4FF66129836DC7D81311A9E /* icon_nap_src.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_nap_src.png; sourceTree = "<group>"; };
@@ -185,8 +195,13 @@
 			children = (
 				24DBC1C7631F2AFDD1CF434E /* BabyProfileHeader.swift */,
 				AABCAF24D95D52ED81F00AB3 /* DayTimelineBar.swift */,
+				CA1DAY0000000000CALENDAR /* CalendarDayView.swift */,
+				NW1CARD000000000000000A /* NightWakesCard.swift */,
 				0917430CEC727F7FE7E76077 /* QuickActionGrid.swift */,
 				52B27196B556A88541BEA446 /* TimelineEventRow.swift */,
+				TSPILLS00 /* TimeSincePills.swift */,
+				02818FEEBCDD1D76E02A353F /* DailyRings.swift */,
+				SMARTSG00 /* SmartSuggestionCard.swift */,
 				476FDD91ED3B6BC18FCD1EF8 /* TimelineTab.swift */,
 			);
 			path = Timeline;
@@ -327,6 +342,8 @@
 				33F0828446C82411E1D006AC /* BabyStore.swift in Sources */,
 				2D768F3B5912D9F8C8FD98A7 /* BabyTrackerApp.swift in Sources */,
 				0C194C68D8DCCF5EDB210EE7 /* DayTimelineBar.swift in Sources */,
+				CA1DAY0000000001CALENDAR /* CalendarDayView.swift in Sources */,
+				NW1CARD000000000000000B /* NightWakesCard.swift in Sources */,
 				CD97B2CE7B50074DBB4E1D7D /* DevicesTab.swift in Sources */,
 				A0E55112F40DCEEDA5BFCF2F /* ExpandedSessionCard.swift in Sources */,
 				ECA6C1A5CAC7CF4A730EB800 /* MoonboonColors.swift in Sources */,
@@ -339,6 +356,9 @@
 				E8DB10DBEFBAE0A58E45E510 /* TimelineEvent.swift in Sources */,
 				E22EC173ED828A86DB8F2DC4 /* TimelineEventRow.swift in Sources */,
 				51BECDE73E5C10BA44C39747 /* TimelineStore.swift in Sources */,
+				TSPILLS01 /* TimeSincePills.swift in Sources */,
+				3D381705507EDD57D4BA60DE /* DailyRings.swift in Sources */,
+				SMARTSG01 /* SmartSuggestionCard.swift in Sources */,
 				0D0800DF44659F274853A854 /* TimelineTab.swift in Sources */,
 				967691C4636E1D40228EDB6B /* WeeklyChart.swift in Sources */,
 			);

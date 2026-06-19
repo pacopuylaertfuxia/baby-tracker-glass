@@ -46,14 +46,19 @@ struct SessionAccessoryContent: View {
     }
 
     /// Single glass pill for a session.
-    /// `compact`: when true, shows icon + timer only (3-session mode).
+    /// `compact`: when true, shows product image + timer only (3-session mode, matches Figma 606:1296).
     private func sessionPill(_ session: ActiveSession, compact: Bool) -> some View {
         HStack(spacing: 8) {
-            sessionIcon(session)
-                .frame(width: 36, height: 36)
+            // Product image — 43×42 in compact (Figma spec), 36×36 in normal
+            sessionImage(session)
+                .frame(
+                    width: compact ? (session.type == .monitor ? 36 : 48) : 36,
+                    height: compact ? (session.type == .monitor ? 36 : 47) : 36
+                )
+                .clipped()
 
             if compact {
-                // Timer only
+                // Timer only — 14px SF Pro Regular, clay color
                 timerLabel(session)
             } else {
                 // Label + timer stacked
@@ -67,27 +72,32 @@ struct SessionAccessoryContent: View {
                 Spacer(minLength: 0)
             }
         }
-        .padding(.horizontal, 10)
-        .padding(.vertical, 7)
-        .frame(maxWidth: .infinity)
-        .background(.white.opacity(0.5), in: RoundedRectangle(cornerRadius: 16))
+        .padding(.leading, 4)
+        .padding(.trailing, compact ? 8 : 10)
+        .padding(.vertical, 4)
+        .frame(maxWidth: .infinity, minHeight: 50)
+        .background {
+            Capsule()
+                .fill(.moonCardBg.opacity(0.7))
+        }
     }
 
+    /// Product images for session pills (motor/monitor use real product photos, nap uses icon)
     @ViewBuilder
-    private func sessionIcon(_ session: ActiveSession) -> some View {
+    private func sessionImage(_ session: ActiveSession) -> some View {
         switch session.type {
         case .nap:
             Image("icon_nap")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
         case .motor:
-            Image("icon_moon")
+            Image("session_motor")
                 .resizable()
-                .aspectRatio(contentMode: .fit)
+                .aspectRatio(contentMode: .fill)
         case .monitor:
-            Image(systemName: "video.fill")
-                .font(.body)
-                .foregroundStyle(.moonClay)
+            Image("session_monitor")
+                .resizable()
+                .aspectRatio(contentMode: .fill)
         }
     }
 
@@ -96,21 +106,21 @@ struct SessionAccessoryContent: View {
         switch session.type {
         case .nap:
             Text(formatDuration(sessionManager.elapsed(for: session)))
-                .font(.subheadline.weight(.medium))
+                .font(.system(size: 14))
                 .monospacedDigit()
                 .contentTransition(.numericText())
                 .foregroundStyle(.moonClay)
         case .motor:
             if let rem = sessionManager.remaining(for: session) {
                 Text(formatDuration(rem))
-                    .font(.subheadline.weight(.medium))
+                    .font(.system(size: 14))
                     .monospacedDigit()
                     .contentTransition(.numericText())
                     .foregroundStyle(.moonClay)
             }
         case .monitor:
             Text("Max")
-                .font(.subheadline.weight(.medium))
+                .font(.system(size: 14))
                 .foregroundStyle(.moonClay)
         }
     }

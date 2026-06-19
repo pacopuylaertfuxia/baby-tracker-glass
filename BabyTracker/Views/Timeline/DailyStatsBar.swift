@@ -5,9 +5,6 @@ struct DailyStatsBar: View {
     @Environment(TimelineStore.self) private var store
     @State private var showDetail = false
 
-    private let sleepGoal: TimeInterval = 4 * 3600
-    private let napGoal: Double = 3
-
     var body: some View {
         HStack(spacing: 10) {
             Button { showDetail = true } label: {
@@ -15,8 +12,7 @@ struct DailyStatsBar: View {
                     icon: "clock.fill",
                     tint: .moonSleep,
                     value: formatSleep(store.totalSleepToday),
-                    label: "slept",
-                    progress: store.totalSleepToday / sleepGoal
+                    label: "slept"
                 )
             }
             .buttonStyle(.plain)
@@ -26,8 +22,7 @@ struct DailyStatsBar: View {
                     icon: "moon.fill",
                     tint: .moonClay,
                     value: "\(store.napCountToday)",
-                    label: store.napCountToday == 1 ? "nap" : "naps",
-                    progress: Double(store.napCountToday) / napGoal
+                    label: store.napCountToday == 1 ? "nap" : "naps"
                 )
             }
             .buttonStyle(.plain)
@@ -41,7 +36,7 @@ struct DailyStatsBar: View {
 
     // MARK: - Pill
 
-    private func statPill(icon: String, tint: Color, value: String, label: String, progress: Double) -> some View {
+    private func statPill(icon: String, tint: Color, value: String, label: String) -> some View {
         HStack(spacing: 8) {
             Image(systemName: icon)
                 .font(.system(size: 15, weight: .semibold))
@@ -61,7 +56,9 @@ struct DailyStatsBar: View {
         .padding(.vertical, 12)
         .frame(maxWidth: .infinity)
         .background {
-            ProgressBorderPill(progress: min(progress, 1.0), tint: tint)
+            Capsule()
+                .fill(.moonWhite)
+                .shadow(color: .moonBlack.opacity(0.04), radius: 6, y: 3)
         }
     }
 
@@ -151,9 +148,6 @@ private struct DailyStatsDetail: View {
     @Environment(TimelineStore.self) private var store
     @Environment(\.dismiss) private var dismiss
 
-    private let sleepGoal: TimeInterval = 4 * 3600
-    private let napGoal: Double = 3
-
     var body: some View {
         NavigationStack {
             ScrollView {
@@ -165,14 +159,12 @@ private struct DailyStatsDetail: View {
                         detailCard(
                             tint: .moonSleep,
                             value: formatSleep(store.totalSleepToday),
-                            label: "Total napped",
-                            progress: store.totalSleepToday / sleepGoal
+                            label: "Total napped"
                         )
                         detailCard(
                             tint: .moonSleep,
                             value: "\(store.napCountToday)",
-                            label: "Naps today",
-                            progress: Double(store.napCountToday) / napGoal
+                            label: "Naps today"
                         )
                     }
 
@@ -181,22 +173,18 @@ private struct DailyStatsDetail: View {
                             detailCard(
                                 tint: .moonSleep,
                                 value: formatSleep(report.totalSleep),
-                                label: "Last night",
-                                progress: nil
+                                label: "Last night"
                             )
                             detailCard(
                                 tint: .moonWake,
                                 value: "\(report.wakeCount)",
-                                label: "Night wakes",
-                                progress: nil
+                                label: "Night wakes"
                             )
                         }
                     }
 
                     // ── Feeding ──
                     let feedCount = store.countToday([.bottle, .nursing, .pumping, .solids])
-                    let bottleCount = store.countToday([.bottle])
-                    let nursingCount = store.countToday([.nursing])
 
                     sectionHeader("Feeding", icon: "fork.knife", tint: .moonFood)
 
@@ -204,37 +192,7 @@ private struct DailyStatsDetail: View {
                         detailCard(
                             tint: .moonFood,
                             value: "\(feedCount)",
-                            label: "Total feeds",
-                            progress: nil
-                        )
-                        if nursingCount > 0 {
-                            detailCard(
-                                tint: .moonFood,
-                                value: "\(nursingCount)",
-                                label: "Nursing",
-                                progress: nil
-                            )
-                        } else {
-                            detailCard(
-                                tint: .moonFood,
-                                value: "\(bottleCount)",
-                                label: "Bottles",
-                                progress: nil
-                            )
-                        }
-                    }
-
-                    // ── Care ──
-                    let diaperCount = store.countToday([.diaper])
-
-                    sectionHeader("Care", icon: "sparkles", tint: .moonChange)
-
-                    HStack(spacing: 12) {
-                        detailCard(
-                            tint: .moonChange,
-                            value: "\(diaperCount)",
-                            label: "Diaper changes",
-                            progress: nil
+                            label: "Total feeds"
                         )
                         Color.clear
                     }
@@ -277,7 +235,7 @@ private struct DailyStatsDetail: View {
         .padding(.top, 12)
     }
 
-    private func detailCard(tint: Color, value: String, label: String, progress: Double?) -> some View {
+    private func detailCard(tint: Color, value: String, label: String) -> some View {
         VStack(alignment: .leading, spacing: 10) {
             Text(value)
                 .font(.kepler(36))
@@ -287,19 +245,6 @@ private struct DailyStatsDetail: View {
             Text(label)
                 .font(.system(size: 13, weight: .medium))
                 .foregroundStyle(.moonOlive)
-
-            if let progress {
-                GeometryReader { geo in
-                    ZStack(alignment: .leading) {
-                        Capsule()
-                            .fill(tint.opacity(0.10))
-                        Capsule()
-                            .fill(tint)
-                            .frame(width: max(4, geo.size.width * min(progress, 1.0)))
-                    }
-                }
-                .frame(height: 5)
-            }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(20)

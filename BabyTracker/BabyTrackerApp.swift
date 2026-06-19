@@ -32,7 +32,7 @@ struct BabyTrackerApp: App {
 }
 
 enum AppTab: Hashable {
-    case timeline, overview, devices, add
+    case timeline, devices, add
 }
 
 struct ContentView: View {
@@ -48,12 +48,6 @@ struct ContentView: View {
             Tab("Timeline", systemImage: "clock.arrow.trianglehead.counterclockwise.rotate.90", value: .timeline) {
                 NavigationStack {
                     TimelineTab()
-                }
-            }
-
-            Tab("Overview", systemImage: "chart.bar.fill", value: .overview) {
-                NavigationStack {
-                    OverviewTab()
                 }
             }
 
@@ -141,8 +135,8 @@ struct TrackingSheet: View {
     @Environment(\.dismiss) private var dismiss
 
     private let sleepTypes: [TimelineEvent.EventType] = [.wake, .nap, .bedtime, .nightWaking]
-    private let feedingTypes: [TimelineEvent.EventType] = [.bottle, .nursing, .pumping, .solids]
-    private let careTypes: [TimelineEvent.EventType] = [.diaper, .temperature, .medicine]
+    private let feedingTypes: [TimelineEvent.EventType] = [.bottle, .nursing, .solids]
+    private let careTypes: [TimelineEvent.EventType] = [.diaper]
 
     var body: some View {
         ScrollView {

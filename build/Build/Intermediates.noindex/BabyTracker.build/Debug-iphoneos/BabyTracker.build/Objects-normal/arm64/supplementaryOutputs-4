@@ -1,0 +1,30 @@
+{
+  "/Users/pacopuylaert/baby-tracker-glass/BabyTracker/State/SessionManager.swift" : {
+    "const-values" : "/Users/pacopuylaert/baby-tracker-glass/build/Build/Intermediates.noindex/BabyTracker.build/Debug-iphoneos/BabyTracker.build/Objects-normal/arm64/SessionManager.swiftconstvalues",
+    "dependencies" : "/Users/pacopuylaert/baby-tracker-glass/build/Build/Intermediates.noindex/BabyTracker.build/Debug-iphoneos/BabyTracker.build/Objects-normal/arm64/SessionManager.d",
+    "diagnostics" : "/Users/pacopuylaert/baby-tracker-glass/build/Build/Intermediates.noindex/BabyTracker.build/Debug-iphoneos/BabyTracker.build/Objects-normal/arm64/SessionManager.dia",
+    "object" : "/Users/pacopuylaert/baby-tracker-glass/build/Build/Intermediates.noindex/BabyTracker.build/Debug-iphoneos/BabyTracker.build/Objects-normal/arm64/SessionManager.o",
+    "swift-dependencies" : "/Users/pacopuylaert/baby-tracker-glass/build/Build/Intermediates.noindex/BabyTracker.build/Debug-iphoneos/BabyTracker.build/Objects-normal/arm64/SessionManager.swiftdeps"
+  },
+  "/Users/pacopuylaert/baby-tracker-glass/BabyTracker/Theme/MoonboonTypography.swift" : {
+    "const-values" : "/Users/pacopuylaert/baby-tracker-glass/build/Build/Intermediates.noindex/BabyTracker.build/Debug-iphoneos/BabyTracker.build/Objects-normal/arm64/MoonboonTypography.swiftconstvalues",
+    "dependencies" : "/Users/pacopuylaert/baby-tracker-glass/build/Build/Intermediates.noindex/BabyTracker.build/Debug-iphoneos/BabyTracker.build/Objects-normal/arm64/MoonboonTypography.d",
+    "diagnostics" : "/Users/pacopuylaert/baby-tracker-glass/build/Build/Intermediates.noindex/BabyTracker.build/Debug-iphoneos/BabyTracker.build/Objects-normal/arm64/MoonboonTypography.dia",
+    "object" : "/Users/pacopuylaert/baby-tracker-glass/build/Build/Intermediates.noindex/BabyTracker.build/Debug-iphoneos/BabyTracker.build/Objects-normal/arm64/MoonboonTypography.o",
+    "swift-dependencies" : "/Users/pacopuylaert/baby-tracker-glass/build/Build/Intermediates.noindex/BabyTracker.build/Debug-iphoneos/BabyTracker.build/Objects-normal/arm64/MoonboonTypography.swiftdeps"
+  },
+  "/Users/pacopuylaert/baby-tracker-glass/BabyTracker/Views/Overview/OverviewTab.swift" : {
+    "const-values" : "/Users/pacopuylaert/baby-tracker-glass/build/Build/Intermediates.noindex/BabyTracker.build/Debug-iphoneos/BabyTracker.build/Objects-normal/arm64/OverviewTab.swiftconstvalues",
+    "dependencies" : "/Users/pacopuylaert/baby-tracker-glass/build/Build/Intermediates.noindex/BabyTracker.build/Debug-iphoneos/BabyTracker.build/Objects-normal/arm64/OverviewTab.d",
+    "diagnostics" : "/Users/pacopuylaert/baby-tracker-glass/build/Build/Intermediates.noindex/BabyTracker.build/Debug-iphoneos/BabyTracker.build/Objects-normal/arm64/OverviewTab.dia",
+    "object" : "/Users/pacopuylaert/baby-tracker-glass/build/Build/Intermediates.noindex/BabyTracker.build/Debug-iphoneos/BabyTracker.build/Objects-normal/arm64/OverviewTab.o",
+    "swift-dependencies" : "/Users/pacopuylaert/baby-tracker-glass/build/Build/Intermediates.noindex/BabyTracker.build/Debug-iphoneos/BabyTracker.build/Objects-normal/arm64/OverviewTab.swiftdeps"
+  },
+  "/Users/pacopuylaert/baby-tracker-glass/BabyTracker/Views/Timeline/QuickActionGrid.swift" : {
+    "const-values" : "/Users/pacopuylaert/baby-tracker-glass/build/Build/Intermediates.noindex/BabyTracker.build/Debug-iphoneos/BabyTracker.build/Objects-normal/arm64/QuickActionGrid.swiftconstvalues",
+    "dependencies" : "/Users/pacopuylaert/baby-tracker-glass/build/Build/Intermediates.noindex/BabyTracker.build/Debug-iphoneos/BabyTracker.build/Objects-normal/arm64/QuickActionGrid.d",
+    "diagnostics" : "/Users/pacopuylaert/baby-tracker-glass/build/Build/Intermediates.noindex/BabyTracker.build/Debug-iphoneos/BabyTracker.build/Objects-normal/arm64/QuickActionGrid.dia",
+    "object" : "/Users/pacopuylaert/baby-tracker-glass/build/Build/Intermediates.noindex/BabyTracker.build/Debug-iphoneos/BabyTracker.build/Objects-normal/arm64/QuickActionGrid.o",
+    "swift-dependencies" : "/Users/pacopuylaert/baby-tracker-glass/build/Build/Intermediates.noindex/BabyTracker.build/Debug-iphoneos/BabyTracker.build/Objects-normal/arm64/QuickActionGrid.swiftdeps"
+  }
+}

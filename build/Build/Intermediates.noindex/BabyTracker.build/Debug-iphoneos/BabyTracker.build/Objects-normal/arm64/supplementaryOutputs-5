@@ -1,0 +1,23 @@
+{
+  "/Users/pacopuylaert/baby-tracker-glass/BabyTracker/Models/TimelineEvent.swift" : {
+    "const-values" : "/Users/pacopuylaert/baby-tracker-glass/build/Build/Intermediates.noindex/BabyTracker.build/Debug-iphoneos/BabyTracker.build/Objects-normal/arm64/TimelineEvent.swiftconstvalues",
+    "dependencies" : "/Users/pacopuylaert/baby-tracker-glass/build/Build/Intermediates.noindex/BabyTracker.build/Debug-iphoneos/BabyTracker.build/Objects-normal/arm64/TimelineEvent.d",
+    "diagnostics" : "/Users/pacopuylaert/baby-tracker-glass/build/Build/Intermediates.noindex/BabyTracker.build/Debug-iphoneos/BabyTracker.build/Objects-normal/arm64/TimelineEvent.dia",
+    "object" : "/Users/pacopuylaert/baby-tracker-glass/build/Build/Intermediates.noindex/BabyTracker.build/Debug-iphoneos/BabyTracker.build/Objects-normal/arm64/TimelineEvent.o",
+    "swift-dependencies" : "/Users/pacopuylaert/baby-tracker-glass/build/Build/Intermediates.noindex/BabyTracker.build/Debug-iphoneos/BabyTracker.build/Objects-normal/arm64/TimelineEvent.swiftdeps"
+  },
+  "/Users/pacopuylaert/baby-tracker-glass/BabyTracker/Views/Overview/SleepSummaryCard.swift" : {
+    "const-values" : "/Users/pacopuylaert/baby-tracker-glass/build/Build/Intermediates.noindex/BabyTracker.build/Debug-iphoneos/BabyTracker.build/Objects-normal/arm64/SleepSummaryCard.swiftconstvalues",
+    "dependencies" : "/Users/pacopuylaert/baby-tracker-glass/build/Build/Intermediates.noindex/BabyTracker.build/Debug-iphoneos/BabyTracker.build/Objects-normal/arm64/SleepSummaryCard.d",
+    "diagnostics" : "/Users/pacopuylaert/baby-tracker-glass/build/Build/Intermediates.noindex/BabyTracker.build/Debug-iphoneos/BabyTracker.build/Objects-normal/arm64/SleepSummaryCard.dia",
+    "object" : "/Users/pacopuylaert/baby-tracker-glass/build/Build/Intermediates.noindex/BabyTracker.build/Debug-iphoneos/BabyTracker.build/Objects-normal/arm64/SleepSummaryCard.o",
+    "swift-dependencies" : "/Users/pacopuylaert/baby-tracker-glass/build/Build/Intermediates.noindex/BabyTracker.build/Debug-iphoneos/BabyTracker.build/Objects-normal/arm64/SleepSummaryCard.swiftdeps"
+  },
+  "/Users/pacopuylaert/baby-tracker-glass/BabyTracker/Views/SessionBar/SessionPill.swift" : {
+    "const-values" : "/Users/pacopuylaert/baby-tracker-glass/build/Build/Intermediates.noindex/BabyTracker.build/Debug-iphoneos/BabyTracker.build/Objects-normal/arm64/SessionPill.swiftconstvalues",
+    "dependencies" : "/Users/pacopuylaert/baby-tracker-glass/build/Build/Intermediates.noindex/BabyTracker.build/Debug-iphoneos/BabyTracker.build/Objects-normal/arm64/SessionPill.d",
+    "diagnostics" : "/Users/pacopuylaert/baby-tracker-glass/build/Build/Intermediates.noindex/BabyTracker.build/Debug-iphoneos/BabyTracker.build/Objects-normal/arm64/SessionPill.dia",
+    "object" : "/Users/pacopuylaert/baby-tracker-glass/build/Build/Intermediates.noindex/BabyTracker.build/Debug-iphoneos/BabyTracker.build/Objects-normal/arm64/SessionPill.o",
+    "swift-dependencies" : "/Users/pacopuylaert/baby-tracker-glass/build/Build/Intermediates.noindex/BabyTracker.build/Debug-iphoneos/BabyTracker.build/Objects-normal/arm64/SessionPill.swiftdeps"
+  }
+}

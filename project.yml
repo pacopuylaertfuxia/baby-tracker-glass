@@ -11,14 +11,37 @@ targets:
     platform: iOS
     sources:
       - BabyTracker
+      - Shared
     settings:
       base:
         INFOPLIST_FILE: BabyTracker/Info.plist
         GENERATE_INFOPLIST_FILE: true
         SWIFT_VERSION: "6.0"
         PRODUCT_BUNDLE_IDENTIFIER: com.moonboon.babytracker.glass
+        MARKETING_VERSION: "1.0"
+        CURRENT_PROJECT_VERSION: "1"
         INFOPLIST_KEY_CFBundleDisplayName: "Baby Tracker"
         INFOPLIST_KEY_UILaunchScreen_Generation: true
         INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone: UIInterfaceOrientationPortrait
         CODE_SIGN_STYLE: Automatic
         DEVELOPMENT_TEAM: RY2B288BK2
+    dependencies:
+      - target: SleepActivityWidgetExtension
+
+  SleepActivityWidgetExtension:
+    type: app-extension
+    platform: iOS
+    sources:
+      - SleepActivityWidget
+      - Shared
+    settings:
+      base:
+        INFOPLIST_FILE: SleepActivityWidget/Info.plist
+        GENERATE_INFOPLIST_FILE: true
+        SWIFT_VERSION: "6.0"
+        PRODUCT_BUNDLE_IDENTIFIER: com.moonboon.babytracker.glass.SleepActivityWidget
+        MARKETING_VERSION: "1.0"
+        CURRENT_PROJECT_VERSION: "1"
+        CODE_SIGN_STYLE: Automatic
+        DEVELOPMENT_TEAM: RY2B288BK2
+        LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks"

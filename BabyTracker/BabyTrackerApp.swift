@@ -5,6 +5,7 @@ struct BabyTrackerApp: App {
     @State private var sessionManager = SessionManager()
     @State private var timelineStore = TimelineStore()
     @State private var babyStore = BabyStore()
+    @State private var napReminder: NapReminderService?
 
     var body: some Scene {
         WindowGroup {
@@ -12,6 +13,20 @@ struct BabyTrackerApp: App {
                 .environment(sessionManager)
                 .environment(timelineStore)
                 .environment(babyStore)
+                .onAppear {
+                    sessionManager.babyName = babyStore.baby.name
+                    if napReminder == nil {
+                        let service = NapReminderService(store: timelineStore, babyStore: babyStore)
+                        napReminder = service
+                        service.requestPermission()
+                    }
+                }
+                .onChange(of: babyStore.baby.name) {
+                    sessionManager.babyName = babyStore.baby.name
+                }
+                .onChange(of: timelineStore.events.count) {
+                    napReminder?.scheduleIfNeeded()
+                }
         }
     }
 }
@@ -25,6 +40,8 @@ struct ContentView: View {
     @Environment(TimelineStore.self) private var timelineStore
     @State private var selectedTab: AppTab = .timeline
     @State private var showTrackingSheet = false
+    @State private var showBedtimeScreen = false
+    @State private var showNapScreen = false
 
     var body: some View {
         TabView(selection: $selectedTab) {
@@ -52,9 +69,11 @@ struct ContentView: View {
                 Label("Add", systemImage: "plus")
             }
         }
-        .tabViewBottomAccessory(isEnabled: sessionManager.hasActiveSessions) {
-            SessionAccessoryContent()
-        }
+        .modifier(BottomAccessoryModifier(
+            isEnabled: sessionManager.hasActiveSessions,
+            onOpenNapScreen: { showNapScreen = true },
+            onOpenBedtimeScreen: { showBedtimeScreen = true }
+        ))
         .tabBarMinimizeBehavior(.onScrollDown)
         .tint(.moonClay)
         .onChange(of: selectedTab) { old, new in
@@ -68,6 +87,48 @@ struct ContentView: View {
                 .presentationDetents([.medium, .large])
                 .presentationDragIndicator(.visible)
                 .presentationBackground(.ultraThinMaterial)
+        }
+        .fullScreenCover(isPresented: $showBedtimeScreen) {
+            SleepTrackingScreen(mode: .bedtime)
+        }
+        .fullScreenCover(isPresented: $showNapScreen) {
+            SleepTrackingScreen(mode: .nap)
+        }
+        .onChange(of: sessionManager.activeBedtime != nil) { _, hasBedtime in
+            if hasBedtime {
+                showBedtimeScreen = true
+            } else {
+                showBedtimeScreen = false
+            }
+        }
+        .onChange(of: sessionManager.activeNap != nil) { _, hasNap in
+            if hasNap && !showNapScreen {
+                showNapScreen = true
+            } else if !hasNap {
+                showNapScreen = false
+            }
+        }
+    }
+}
+
+// MARK: - Availability Wrapper
+
+struct BottomAccessoryModifier: ViewModifier {
+    let isEnabled: Bool
+    var onOpenNapScreen: (() -> Void)?
+    var onOpenBedtimeScreen: (() -> Void)?
+
+    func body(content: Content) -> some View {
+        if #available(iOS 26.1, *) {
+            content
+                .tabViewBottomAccessory(isEnabled: isEnabled) {
+                    SessionAccessoryContent(
+                        onOpenNapScreen: onOpenNapScreen,
+                        onOpenBedtimeScreen: onOpenBedtimeScreen
+                    )
+                }
+        } else {
+            content
         }
     }
 }
@@ -164,6 +225,9 @@ struct TrackingSheet: View {
         switch type {
         case .nap:
             sessionManager.startNap()
+        case .bedtime:
+            sessionManager.startBedtime()
+            timelineStore.logBedtime()
         default:
             timelineStore.logEvent(type)
         }

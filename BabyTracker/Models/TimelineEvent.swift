@@ -8,6 +8,8 @@ struct TimelineEvent: Identifiable {
     let subtitle: String?
     let timestamp: Date
     let endTime: Date?
+    let audioURL: URL?
+    let wakeDuration: TimeInterval?
 
     enum EventType: String, CaseIterable {
         // Sleep
@@ -132,12 +134,14 @@ struct TimelineEvent: Identifiable {
         }
     }
 
-    init(type: EventType, title: String, subtitle: String? = nil, timestamp: Date = .now, endTime: Date? = nil) {
+    init(type: EventType, title: String, subtitle: String? = nil, timestamp: Date = .now, endTime: Date? = nil, audioURL: URL? = nil, wakeDuration: TimeInterval? = nil) {
         self.id = UUID()
         self.type = type
         self.title = title
         self.subtitle = subtitle
         self.timestamp = timestamp
         self.endTime = endTime
+        self.audioURL = audioURL
+        self.wakeDuration = wakeDuration
     }
 }

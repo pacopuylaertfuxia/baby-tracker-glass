@@ -1,6 +1,6 @@
 import SwiftUI
 
-/// Horizontally scrollable "time since" cards — icon floating out, time + "ago" below
+/// Horizontally scrollable "time since" cards — big icon floating top-left, time + "ago" below
 struct TimeSinceRow: View {
     @Environment(TimelineStore.self) private var store
 
@@ -11,22 +11,19 @@ struct TimeSinceRow: View {
                     icon: "icon_feed",
                     label: "Last fed",
                     elapsed: store.timeSince([.bottle, .nursing, .pumping, .solids]),
-                    rotation: 14,
-                    iconOffset: CGSize(width: -28, height: -50)
+                    iconOffset: CGSize(width: -10, height: -40)
                 )
                 timeSinceCard(
                     icon: "icon_nap",
                     label: "Last slept",
                     elapsed: store.timeSince([.nap]),
-                    rotation: -12,
-                    iconOffset: CGSize(width: -24, height: -48)
+                    iconOffset: CGSize(width: -6, height: -38)
                 )
                 timeSinceCard(
                     icon: "icon_diaper",
                     label: "Last diaper",
                     elapsed: store.timeSince([.diaper]),
-                    rotation: 16,
-                    iconOffset: CGSize(width: -26, height: -52)
+                    iconOffset: CGSize(width: -8, height: -42)
                 )
             }
             .padding(.horizontal, 20)
@@ -38,7 +35,6 @@ struct TimeSinceRow: View {
         icon: String,
         label: String,
         elapsed: TimeInterval?,
-        rotation: Double,
         iconOffset: CGSize
     ) -> some View {
         VStack(alignment: .leading, spacing: 4) {
@@ -75,8 +71,7 @@ struct TimeSinceRow: View {
             Image(icon)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(width: 130, height: 130)
-                .rotationEffect(.degrees(rotation))
+                .frame(width: 110, height: 110)
                 .offset(iconOffset)
         }
     }

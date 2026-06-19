@@ -7,10 +7,18 @@ struct SessionAccessoryContent: View {
     @Environment(TimelineStore.self) private var timelineStore
     @State private var showSheet = false
 
+    var onOpenNapScreen: (() -> Void)?
+    var onOpenBedtimeScreen: (() -> Void)?
+
     var body: some View {
         collapsedBar
             .onTapGesture {
-                showSheet = true
+                // If only sleep sessions, go straight to full-screen
+                if let callback = sleepScreenCallback {
+                    callback()
+                } else {
+                    showSheet = true
+                }
             }
             .sheet(isPresented: $showSheet) {
                 expandedSheet
@@ -18,6 +26,17 @@ struct SessionAccessoryContent: View {
                     .presentationDragIndicator(.visible)
                     .presentationBackground(.ultraThinMaterial)
             }
+    }
+
+    /// Returns a callback if tapping should open a full-screen sleep view directly.
+    /// Nap or bedtime → open that screen. Multiple mixed sessions → nil (show sheet).
+    private var sleepScreenCallback: (() -> Void)? {
+        let sessions = sessionManager.sessions
+        if sessions.count == 1 {
+            if sessions[0].type == .nap { return onOpenNapScreen }
+            if sessions[0].type == .bedtime { return onOpenBedtimeScreen }
+        }
+        return nil
     }
 
     // MARK: - Collapsed: adaptive pill layout (1 / 2 / 3 sessions)
@@ -98,6 +117,11 @@ struct SessionAccessoryContent: View {
             Image("session_monitor")
                 .resizable()
                 .aspectRatio(contentMode: .fill)
+        case .bedtime:
+            Image(systemName: "moon.zzz.fill")
+                .font(.title2)
+                .foregroundStyle(.moonSleep)
+                .frame(width: 36, height: 36)
         }
     }
 
@@ -121,6 +145,12 @@ struct SessionAccessoryContent: View {
         case .monitor:
             Text("Max")
                 .font(.system(size: 14))
+                .foregroundStyle(.moonClay)
+        case .bedtime:
+            Text(formatDuration(sessionManager.elapsed(for: session)))
+                .font(.system(size: 14))
+                .monospacedDigit()
+                .contentTransition(.numericText())
                 .foregroundStyle(.moonClay)
         }
     }
@@ -156,6 +186,8 @@ struct SessionAccessoryContent: View {
             expandedMotorView(session)
         case .monitor:
             expandedMonitorView(session)
+        case .bedtime:
+            expandedBedtimeView(session)
         }
     }
 
@@ -169,42 +201,36 @@ struct SessionAccessoryContent: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 32, height: 32)
 
-                Text("Napping")
-                    .font(.body.weight(.semibold))
-
-                HStack(spacing: 4) {
-                    Circle()
-                        .fill(.green)
-                        .frame(width: 6, height: 6)
-                        .shadow(color: .green.opacity(0.6), radius: 4)
-                    Text("Live")
-                        .font(.caption.weight(.medium))
-                        .foregroundStyle(.green)
+                VStack(alignment: .leading, spacing: 1) {
+                    Text("Nap mode")
+                        .font(.body.weight(.semibold))
+                    Text("Active · \(formatDuration(sessionManager.elapsed(for: session)))")
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                        .contentTransition(.numericText())
                 }
 
                 Spacer()
             }
             .padding(.horizontal, 20)
 
-            // Big scenic timer
-            Text(formatDuration(sessionManager.elapsed(for: session)))
-                .font(.kepler(44))
-                .monospacedDigit()
-                .contentTransition(.numericText())
-                .foregroundStyle(.moonObsidian)
-                .frame(maxWidth: .infinity)
-                .padding(.vertical, 8)
+            Button {
+                showSheet = false
+                onOpenNapScreen?()
+            } label: {
+                Text("Open nap mode")
+                    .font(.body.weight(.semibold))
+                    .frame(maxWidth: .infinity, minHeight: 44)
+            }
+            .buttonStyle(.glassProminent)
+            .buttonBorderShape(.capsule)
+            .tint(.moonClay)
+            .padding(.horizontal, 20)
 
-            // Since time
-            Text("Since \(session.startTime.formatted(date: .omitted, time: .shortened))")
-                .font(.subheadline)
-                .foregroundStyle(.moonOlive)
-
-            // Stop button
             Button {
                 stopSession(session)
             } label: {
-                Text("Stop nap")
+                Text("Save nap")
                     .font(.body.weight(.semibold))
                     .frame(maxWidth: .infinity, minHeight: 44)
             }
@@ -329,6 +355,56 @@ struct SessionAccessoryContent: View {
         }
     }
 
+    // MARK: - Expanded Bedtime
+
+    private func expandedBedtimeView(_ session: ActiveSession) -> some View {
+        VStack(spacing: 12) {
+            HStack(spacing: 10) {
+                Image(systemName: "moon.zzz.fill")
+                    .font(.title3)
+                    .foregroundStyle(.moonSleep)
+                    .frame(width: 32, height: 32)
+
+                VStack(alignment: .leading, spacing: 1) {
+                    Text("Night mode")
+                        .font(.body.weight(.semibold))
+                    Text("Active · \(formatDuration(sessionManager.elapsed(for: session)))")
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                        .contentTransition(.numericText())
+                }
+
+                Spacer()
+            }
+            .padding(.horizontal, 20)
+
+            Button {
+                showSheet = false
+                onOpenBedtimeScreen?()
+            } label: {
+                Text("Open night mode")
+                    .font(.body.weight(.semibold))
+                    .frame(maxWidth: .infinity, minHeight: 44)
+            }
+            .buttonStyle(.glassProminent)
+            .buttonBorderShape(.capsule)
+            .tint(.moonSleep)
+            .padding(.horizontal, 20)
+
+            Button {
+                stopSession(session)
+            } label: {
+                Text("End night")
+                    .font(.body.weight(.semibold))
+                    .frame(maxWidth: .infinity, minHeight: 44)
+            }
+            .buttonStyle(.glassProminent)
+            .buttonBorderShape(.capsule)
+            .tint(.moonClay)
+            .padding(.horizontal, 20)
+        }
+    }
+
     // MARK: - Helpers
 
     private func motorProgress(_ session: ActiveSession) -> CGFloat {
@@ -343,6 +419,9 @@ struct SessionAccessoryContent: View {
                 let duration = sessionManager.elapsed(for: session)
                 sessionManager.stopSession(session)
                 timelineStore.logNap(duration: duration)
+            } else if session.type == .bedtime {
+                timelineStore.logEvent(.wake)
+                sessionManager.stopSession(session)
             } else {
                 sessionManager.stopSession(session)
             }

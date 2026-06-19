@@ -5,10 +5,12 @@ struct TimelineTab: View {
     @Environment(TimelineStore.self) private var timelineStore
     @Environment(BabyStore.self) private var babyStore
 
-    private var todayString: String {
-        let f = DateFormatter()
-        f.dateFormat = "EEEE, d MMMM"
-        return f.string(from: .now)
+    @State private var mockTimer: Timer?
+
+    /// DailyReportCard shows only in morning (before noon) and evening (after 7pm)
+    private var showDailyReport: Bool {
+        let hour = Calendar.current.component(.hour, from: .now)
+        return hour < 12 || hour >= 19
     }
 
     var body: some View {
@@ -17,6 +19,11 @@ struct TimelineTab: View {
                 // ── Header ──
                 VStack(spacing: 4) {
                     BabyProfileHeader(baby: babyStore.baby)
+
+                    // ── Stats bar (always visible) ──
+                    DailyStatsBar()
+                        .padding(.top, 4)
+
                     TimeSinceRow()
                 }
                 .padding(.bottom, 14)
@@ -26,9 +33,19 @@ struct TimelineTab: View {
                         .padding(.top, -200)
                 }
 
+                // ── Daily Report (morning & evening only) ──
+                if showDailyReport {
+                    DailyReportCard()
+                        .padding(.top, 16)
+                }
+
+                // ── Last Night ──
+                LastNightCard()
+                    .padding(.top, 14)
+
                 // ── Daily Rings ──
                 DailyRings()
-                    .padding(.top, 16)
+                    .padding(.top, 14)
 
                 // ── Night Wakes ──
                 NightWakesCard()
@@ -43,7 +60,20 @@ struct TimelineTab: View {
         }
         .background(.moonCreme)
         .scrollContentBackground(.hidden)
-        .navigationTitle(todayString)
-        .toolbarTitleDisplayMode(.inline)
+        .toolbar(.hidden, for: .navigationBar)
+        .onAppear {
+            // Mock: inject a nap after 60 seconds to demo the stats updating
+            mockTimer = Timer.scheduledTimer(withTimeInterval: 60, repeats: false) { _ in
+                Task { @MainActor in
+                    withAnimation(.easeInOut(duration: 0.6)) {
+                        timelineStore.logNap(duration: 38 * 60) // 38 min nap
+                    }
+                }
+            }
+        }
+        .onDisappear {
+            mockTimer?.invalidate()
+            mockTimer = nil
+        }
     }
 }

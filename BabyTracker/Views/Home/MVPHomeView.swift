@@ -10,12 +10,7 @@ struct MVPHomeView: View {
     @State private var showNapScreen = false
     @State private var showPickDevice = false
 
-    /// Connected devices. Starts empty (fresh account → empty state);
-    /// the user adds one via the "Add device" flow (Pick Device sheet).
-    @State private var connectedDevices: [MVPDevice] = []
-
-    /// Genesis event shown at the bottom of Latest events for a fresh account.
-    private let profileCreatedDate = Date.now.addingTimeInterval(-180)
+    @State private var connectedDevices: [MVPDevice] = [.cradleBouncers]
 
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -83,51 +78,22 @@ struct MVPHomeView: View {
                     .font(.system(size: 18, weight: .medium))
                     .foregroundStyle(.moonOlive)
                 Spacer()
-                // "Add" pill only appears once at least one device is connected.
-                // In the empty state the full-width dashed button is the add affordance.
-                if !connectedDevices.isEmpty {
-                    Button {
-                        showPickDevice = true
-                    } label: {
-                        Text("Add")
-                            .font(.system(size: 14, weight: .medium))
-                            .foregroundStyle(.moonBlack)
-                            .padding(.horizontal, 12)
-                            .frame(height: 28)
-                            .background(.moonApricot, in: Capsule())
-                    }
-                    .buttonStyle(.plain)
+                Button {
+                    showPickDevice = true
+                } label: {
+                    Text("Add")
+                        .font(.system(size: 14, weight: .medium))
+                        .foregroundStyle(.moonBlack)
+                        .padding(.horizontal, 12)
+                        .frame(height: 28)
+                        .background(.moonApricot, in: Capsule())
                 }
+                .buttonStyle(.plain)
             }
             .padding(.horizontal, 8)
 
-            if connectedDevices.isEmpty {
-                addDeviceButton
-            } else {
-                deviceCards
-            }
+            deviceCards
         }
-    }
-
-    private var addDeviceButton: some View {
-        Button {
-            showPickDevice = true
-        } label: {
-            Text("Add device")
-                .font(.system(size: 16, weight: .medium))
-                .foregroundStyle(.moonOlive)
-                .frame(maxWidth: .infinity)
-                .frame(height: 106)
-                .background(.moonOverlay, in: RoundedRectangle(cornerRadius: 24))
-                .overlay(
-                    RoundedRectangle(cornerRadius: 24)
-                        .strokeBorder(
-                            .moonOlive.opacity(0.35),
-                            style: StrokeStyle(lineWidth: 1.5, dash: [6, 5])
-                        )
-                )
-        }
-        .buttonStyle(.plain)
     }
 
     @ViewBuilder
@@ -195,68 +161,10 @@ struct MVPHomeView: View {
                 .foregroundStyle(.moonOlive)
                 .padding(.horizontal, 8)
 
-            // Fresh account: prompt to log the first event.
-            if recentEvents.isEmpty {
-                trackFirstEventRow
-            } else {
-                ForEach(recentEvents) { event in
-                    eventRow(event)
-                }
+            ForEach(recentEvents) { event in
+                eventRow(event)
             }
-
-            // Genesis event — always present as the account's first entry.
-            babyProfileCreatedRow
         }
-    }
-
-    private var trackFirstEventRow: some View {
-        Button {
-            showTrackSheet = true
-        } label: {
-            HStack(spacing: 8) {
-                Image(systemName: "square.and.pencil")
-                    .font(.system(size: 18))
-                    .foregroundStyle(.moonClay)
-                    .frame(width: 32, height: 32)
-
-                Text("Track your first event")
-                    .font(.system(size: 14))
-                    .foregroundStyle(.moonOlive)
-
-                Spacer()
-
-                Text("now")
-                    .font(.system(size: 12))
-                    .foregroundStyle(.moonOlive)
-                    .padding(.horizontal, 8)
-                    .padding(.vertical, 2)
-                    .background(.white, in: Capsule())
-                    .shadow(color: .black.opacity(0.06), radius: 8, y: 2)
-            }
-            .padding(12)
-            .background(.moonOverlay, in: RoundedRectangle(cornerRadius: 24))
-        }
-        .buttonStyle(.plain)
-    }
-
-    private var babyProfileCreatedRow: some View {
-        HStack(spacing: 8) {
-            Image("baby_avatar")
-                .resizable()
-                .scaledToFill()
-                .frame(width: 32, height: 32)
-                .clipShape(Circle())
-
-            Text("Baby profile created")
-                .font(.system(size: 14))
-                .foregroundStyle(.moonOlive)
-
-            Spacer()
-
-            agoChip(for: profileCreatedDate)
-        }
-        .padding(12)
-        .background(.moonOverlay, in: RoundedRectangle(cornerRadius: 24))
     }
 
     private var recentEvents: [TimelineEvent] {

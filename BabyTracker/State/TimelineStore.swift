@@ -5,8 +5,7 @@ final class TimelineStore {
     var events: [TimelineEvent] = []
 
     init() {
-        // Fresh account — the MVP Home starts in its empty state.
-        events = []
+        seedMockEvents()
     }
 
     func addEvent(_ event: TimelineEvent) {

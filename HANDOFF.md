@@ -24,7 +24,7 @@ what's portable and define the refinement workflow with me.
 | `v3` | Stats pills, iOS Live Activities, daily report, event deletion, header redesign | Live Activity concept validated; stats overload rejected |
 | `v4` | "Science-driven simplification" — stripped anxiety-inducing metrics, fewer numbers, more signal | Key product insight: **less is more** for tired parents |
 | `v5` | Napper-app-style structure: Schedule (circular clock + predictions), Trends, Sounds, You tabs | Competitor teardown; circular clock + nap prediction worth keeping conceptually |
-| `v6` | **Current: MVP Home** — single screen from the Figma MVP vision (node 989:4711): devices, latest events, track sheet, empty-state-first | This is the direction to look at |
+| `v6` | **Current: MVP Home** — single screen from the Figma MVP vision (node 989:4711): devices, latest events, track sheet | This is the direction to look at |
 
 The rejected iterations are as informative as the final one — they're all still in
 the code (legacy `TabView` kept as `legacyTabView` in `BabyTrackerApp.swift`).
@@ -34,12 +34,11 @@ the code (legacy `TabView` kept as `legacyTabView` in `BabyTrackerApp.swift`).
 Entry point renders `MVPHomeView` only. Everything else is reachable via
 `legacyTabView` if you want to see prior iterations.
 
-- `BabyTracker/Views/Home/MVPHomeView.swift` — the whole MVP screen (~550 lines):
-  header, devices section (empty state → add-device sheet → device cards),
-  latest-events feed with genesis event, floating bottom bar (nap pill + track button),
-  `MVPTrackSheet` for logging events.
+- `BabyTracker/Views/Home/MVPHomeView.swift` — the whole MVP screen:
+  header, devices section (device cards + add-device sheet), latest-events feed,
+  floating bottom bar (nap pill + track button), `MVPTrackSheet` for logging events.
 - `BabyTracker/State/SessionManager.swift` — active nap/bedtime session state.
-- `BabyTracker/State/TimelineStore.swift` — in-memory event store (starts empty; fresh-account flow).
+- `BabyTracker/State/TimelineStore.swift` — in-memory event store (seeded with mock data).
 - `BabyTracker/Theme/Moonboon{Colors,Typography}.swift` — token names mirror the design system (`moonCreme`, `moonOlive`, `moonApricot`, Kepler font).
 - `BabyTracker/Views/Timeline/SleepTrackingScreen.swift` — full-screen active-nap view.
 - `SleepActivityWidget/` — Live Activity (lock screen / Dynamic Island) stub.
@@ -47,7 +46,6 @@ Entry point renders `MVPHomeView` only. Everything else is reachable via
 ## Validated vs. speculative
 
 **Confident in (UX-validated by iteration):**
-- Empty-state-first onboarding (fresh account, "track your first event", genesis row)
 - Floating bottom bar: persistent `+` track button, nap pill appearing only during active session
 - Single-screen home over tab sprawl
 - Devices as cards with connect flow
@@ -58,6 +56,11 @@ Entry point renders `MVPHomeView` only. Everything else is reachable via
 - Nap prediction & circular clock (v5 `ScheduleTab`) — concept only, fake algorithm
 - Live Activity — compiles, minimal
 - Voice memos, nap reminders — stubs
+
+**Parked (not in scope for this handoff):**
+- Empty-state / fresh-account onboarding (add-device empty state, "track your first
+  event", genesis row) — preserved on branch `parked/empty-state`; we'll iterate on
+  it separately before it enters the workflow.
 
 ## Known gaps (deliberate — this is a prototype)
 
@@ -76,7 +79,7 @@ Entry point renders `MVPHomeView` only. Everything else is reachable via
 
 ## Walkthrough agenda (30 min)
 
-1. **(5m)** Run the app in the simulator — fresh-account flow: add device → track first event → start nap → nap pill → sleep screen → end nap.
+1. **(5m)** Run the app in the simulator — core flow: track an event → start nap → nap pill → sleep screen → end nap.
 2. **(5m)** The story: flip through v1→v6 commits, what each iteration taught us.
 3. **(10m)** Code tour: `MVPHomeView`, `SessionManager`, `TimelineStore`, theme tokens — how the AI structured it when prompted for "production-minded" code.
 4. **(5m)** What's fake: devices, predictions, persistence.

@@ -27,6 +27,10 @@ extension Color {
     // Surfaces — for card/overlay backgrounds
     static let moonCardBg = Color("moonCardBg")
     static let moonOverlay = Color("moonOverlay")
+
+    // Clock tokens
+    static var moonClockTrack: Color { .moonApricot.opacity(0.2) }
+    static var moonClockNight: Color { .moonSleep.opacity(0.1) }
 }
 
 extension ShapeStyle where Self == Color {
@@ -47,4 +51,6 @@ extension ShapeStyle where Self == Color {
     static var moonChange: Color { .moonChange }
     static var moonCardBg: Color { .moonCardBg }
     static var moonOverlay: Color { .moonOverlay }
+    static var moonClockTrack: Color { .moonClockTrack }
+    static var moonClockNight: Color { .moonClockNight }
 }

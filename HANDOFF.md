@@ -26,13 +26,14 @@ what's portable and define the refinement workflow with me.
 | `v5` | Napper-app-style structure: Schedule (circular clock + predictions), Trends, Sounds, You tabs | Competitor teardown; circular clock + nap prediction worth keeping conceptually |
 | `v6` | **Current: MVP Home** — single screen from the Figma MVP vision (node 989:4711): devices, latest events, track sheet | This is the direction to look at |
 
-The rejected iterations are as informative as the final one — they're all still in
-the code (legacy `TabView` kept as `legacyTabView` in `BabyTrackerApp.swift`).
+The rejected iterations are as informative as the final one — they live in the
+commit history (`git checkout v5-commit` to run any of them), **not** in the
+current code. The branch now contains only the v6 direction, so the diff you
+review is exactly what matters.
 
 ## Current state (v6): what to actually look at
 
-Entry point renders `MVPHomeView` only. Everything else is reachable via
-`legacyTabView` if you want to see prior iterations.
+The whole app is 4 view-layer files + state + theme:
 
 - `BabyTracker/Views/Home/MVPHomeView.swift` — the whole MVP screen:
   header, devices section (device cards + add-device sheet), latest-events feed,
@@ -53,7 +54,7 @@ Entry point renders `MVPHomeView` only. Everything else is reachable via
 
 **Speculative / placeholder:**
 - All device state (`MVPDevice` is hardcoded, one device, fake status — no BLE/real connectivity)
-- Nap prediction & circular clock (v5 `ScheduleTab`) — concept only, fake algorithm
+- Nap prediction & circular clock (v5 `ScheduleTab`, see commit history) — concept only, fake algorithm
 - Live Activity — compiles, minimal
 - Voice memos, nap reminders — stubs
 

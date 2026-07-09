@@ -2,7 +2,7 @@ import SwiftUI
 
 extension Font {
     static func kepler(_ size: CGFloat) -> Font {
-        .custom("Kepler-Std-Display", size: size)
+        .custom("KeplerStd-Disp", size: size)
     }
 
     static var keplerLargeTitle: Font { .kepler(42) }
@@ -10,6 +10,8 @@ extension Font {
     static var keplerHeadline: Font { .kepler(28) }
     static var keplerTimer: Font { .kepler(56) }
     static var keplerStat: Font { .kepler(24) }
+    static var keplerCountdown: Font { .kepler(48) }
+    static var keplerClockLabel: Font { .kepler(14) }
 }
 
 // Convenience for time pill styling

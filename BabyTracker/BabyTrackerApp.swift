@@ -46,6 +46,10 @@ struct ContentView: View {
     @State private var showTrackingSheet = false
 
     var body: some View {
+        MVPHomeView()
+    }
+
+    private var legacyTabView: some View {
         TabView(selection: $selectedTab) {
             Tab("Schedule", systemImage: "clock.fill", value: .schedule) {
                 NavigationStack {

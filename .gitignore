@@ -1,0 +1,15 @@
+# Xcode build output
+build/
+DerivedData/
+
+# User-specific Xcode state
+xcuserdata/
+*.xcuserstate
+
+# Local tooling
+logs/
+.pm-id
+*.bak
+
+# macOS
+.DS_Store

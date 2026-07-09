@@ -10,12 +10,14 @@ struct ActiveSession: Identifiable {
         case nap
         case monitor
         case motor
+        case bedtime
 
         var emoji: String {
             switch self {
             case .nap: return "😴"
             case .monitor: return "📹"
             case .motor: return "🌙"
+            case .bedtime: return "🌙"
             }
         }
 
@@ -24,6 +26,7 @@ struct ActiveSession: Identifiable {
             case .nap: return "Napping"
             case .monitor: return "Streaming"
             case .motor: return "Sleep program"
+            case .bedtime: return "Night"
             }
         }
 
@@ -33,6 +36,7 @@ struct ActiveSession: Identifiable {
             case .nap: return "Napping"
             case .monitor: return "Monitor"
             case .motor: return "Motor program"
+            case .bedtime: return "Night"
             }
         }
     }

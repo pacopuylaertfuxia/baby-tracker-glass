@@ -2,8 +2,7 @@
   "images" : [
     {
       "filename" : "icon_temperature.png",
-      "idiom" : "universal",
-      "scale" : "1x"
+      "idiom" : "universal"
     }
   ],
   "info" : {

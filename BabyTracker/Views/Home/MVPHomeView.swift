@@ -9,6 +9,9 @@ struct MVPHomeView: View {
     @State private var showTrackSheet = false
     @State private var showNapScreen = false
     @State private var showPickDevice = false
+    @State private var showBedtimeScreen = false
+    @State private var bedtimeStartsAwake = false
+    @State private var pendingBedtimeScreen = false
 
     @State private var connectedDevices: [MVPDevice] = [.cradleBouncers]
 
@@ -30,10 +33,13 @@ struct MVPHomeView: View {
             bottomBar
         }
         .sheet(isPresented: $showTrackSheet) {
-            MVPTrackSheet()
-                .presentationDetents([.medium])
-                .presentationDragIndicator(.visible)
-                .presentationBackground(.moonCreme)
+            MVPTrackSheet { startAwake in
+                bedtimeStartsAwake = startAwake
+                pendingBedtimeScreen = true
+            }
+            .presentationDetents([.medium])
+            .presentationDragIndicator(.visible)
+            .presentationBackground(.moonCreme)
         }
         .sheet(isPresented: $showPickDevice) {
             MVPPickDeviceSheet { connect(.cradleBouncers) }
@@ -44,8 +50,21 @@ struct MVPHomeView: View {
         .fullScreenCover(isPresented: $showNapScreen) {
             SleepTrackingScreen(mode: .nap)
         }
+        .fullScreenCover(isPresented: $showBedtimeScreen) {
+            SleepTrackingScreen(mode: .bedtime, startAwake: bedtimeStartsAwake)
+        }
+        .onChange(of: showTrackSheet) { _, shown in
+            // Present the bedtime screen only after the track sheet fully dismisses.
+            if !shown && pendingBedtimeScreen {
+                pendingBedtimeScreen = false
+                showBedtimeScreen = true
+            }
+        }
         .onChange(of: sessionManager.activeNap == nil) { _, ended in
             if ended { showNapScreen = false }
+        }
+        .onChange(of: sessionManager.activeBedtime == nil) { _, ended in
+            if ended { showBedtimeScreen = false }
         }
     }
 
@@ -179,7 +198,7 @@ struct MVPHomeView: View {
                 .font(.system(size: 14))
                 .foregroundStyle(.moonOlive)
 
-            Text("(\(Self.clockFormatter.string(from: event.timestamp).lowercased()))")
+            Text("(\(Self.timeText(for: event)))")
                 .font(.system(size: 12))
                 .foregroundStyle(.moonOlive.opacity(0.7))
 
@@ -227,6 +246,9 @@ struct MVPHomeView: View {
             if sessionManager.activeNap != nil {
                 nappingPill
                     .transition(.move(edge: .bottom).combined(with: .opacity))
+            } else if sessionManager.activeBedtime != nil {
+                sleepingPill
+                    .transition(.move(edge: .bottom).combined(with: .opacity))
             } else {
                 Spacer()
             }
@@ -256,6 +278,39 @@ struct MVPHomeView: View {
             .allowsHitTesting(false)
         }
         .animation(.spring(duration: 0.35), value: sessionManager.activeNap != nil)
+        .animation(.spring(duration: 0.35), value: sessionManager.activeBedtime != nil)
+    }
+
+    private var sleepingPill: some View {
+        Button {
+            bedtimeStartsAwake = false
+            showBedtimeScreen = true
+        } label: {
+            HStack(spacing: 8) {
+                Image("icon_bedtime")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 42, height: 42)
+
+                VStack(alignment: .leading, spacing: 0) {
+                    Text("Sleeping")
+                        .font(.system(size: 12))
+                        .foregroundStyle(.moonObsidian)
+                    if let bedtime = sessionManager.activeBedtime {
+                        Text(bedtime.startTime, style: .timer)
+                            .font(.system(size: 14))
+                            .monospacedDigit()
+                            .foregroundStyle(.moonClay)
+                    }
+                }
+                Spacer()
+            }
+            .padding(9)
+            .frame(height: 59)
+            .frame(maxWidth: .infinity)
+        }
+        .buttonStyle(.glass)
+        .clipShape(Capsule())
     }
 
     private var nappingPill: some View {
@@ -296,6 +351,16 @@ struct MVPHomeView: View {
         f.dateFormat = "h:mm a"
         return f
     }()
+
+    /// Night wakings with a known awake duration show the full window, e.g. "1:30 – 1:38 am".
+    private static func timeText(for event: TimelineEvent) -> String {
+        let start = clockFormatter.string(from: event.timestamp).lowercased()
+        guard event.type == .nightWaking, let duration = event.wakeDuration, duration > 0 else {
+            return start
+        }
+        let end = clockFormatter.string(from: event.timestamp.addingTimeInterval(duration)).lowercased()
+        return "\(start) – \(end)"
+    }
 
     private static func agoValue(since date: Date) -> String {
         let interval = Date.now.timeIntervalSince(date)
@@ -401,6 +466,9 @@ struct MVPTrackSheet: View {
     @Environment(TimelineStore.self) private var timelineStore
     @Environment(\.dismiss) private var dismiss
 
+    /// Called after dismissal to open the bedtime screen; `startAwake` = true for a night waking.
+    let onBedtimeScreen: (_ startAwake: Bool) -> Void
+
     private let types: [TimelineEvent.EventType] = [.nap, .wake, .bedtime, .nightWaking]
 
     var body: some View {
@@ -451,6 +519,16 @@ struct MVPTrackSheet: View {
         case .bedtime:
             sessionManager.startBedtime()
             timelineStore.logBedtime()
+            onBedtimeScreen(false)
+        case .nightWaking:
+            // Night waking lives inside the bedtime flow: start bedtime if needed
+            // and open the bedtime screen in the Awake state. The event is logged
+            // on "Back to sleep" with the awake time window.
+            if sessionManager.activeBedtime == nil {
+                sessionManager.startBedtime()
+                timelineStore.logBedtime()
+            }
+            onBedtimeScreen(true)
         default:
             timelineStore.logEvent(type)
         }

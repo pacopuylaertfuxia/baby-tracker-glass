@@ -18,6 +18,9 @@ struct SleepTrackingScreen: View {
     enum Mode { case nap, bedtime }
 
     let mode: Mode
+    /// When true (bedtime mode), the screen opens directly in the Awake state —
+    /// used when tracking a Night waking from the home screen.
+    var startAwake: Bool = false
 
     @Environment(SessionManager.self) private var sessionManager
     @Environment(TimelineStore.self) private var timelineStore
@@ -30,7 +33,6 @@ struct SleepTrackingScreen: View {
 
     // Bedtime-only
     @State private var isAwake = false
-    @State private var wakeCount = 0
     @State private var noteText = ""
     @State private var selectedReason: String?
     @State private var voiceRecorder = VoiceMemoRecorder()
@@ -71,6 +73,10 @@ struct SleepTrackingScreen: View {
         .onAppear {
             if mode == .bedtime {
                 UIApplication.shared.isIdleTimerDisabled = true
+                if startAwake && wakeStartTime == nil {
+                    wakeStartTime = .now
+                    isAwake = true
+                }
             }
         }
         .onDisappear {
@@ -151,16 +157,68 @@ struct SleepTrackingScreen: View {
             // Buttons
             sleepingButtons
 
-            // Wake counter (bedtime only)
-            if mode == .bedtime && wakeCount > 0 {
-                Text("\(wakeCount) wake-up\(wakeCount == 1 ? "" : "s") tonight")
-                    .font(.system(size: 14))
-                    .foregroundStyle(.white.opacity(0.6))
-                    .padding(.top, 16)
+            // Tonight's night wakings (bedtime only)
+            if mode == .bedtime && !tonightWakes.isEmpty {
+                VStack(spacing: 8) {
+                    Text("\(tonightWakes.count) wake-up\(tonightWakes.count == 1 ? "" : "s") tonight")
+                        .font(.system(size: 14))
+                        .foregroundStyle(.white.opacity(0.6))
+
+                    ForEach(tonightWakes) { wake in
+                        nightWakeRow(wake)
+                    }
+                }
+                .padding(.horizontal, 24)
+                .padding(.top, 16)
             }
 
             Spacer()
         }
+    }
+
+    /// Night waking events logged since this bedtime session started.
+    private var tonightWakes: [TimelineEvent] {
+        guard let bedtime = sessionManager.activeBedtime else { return [] }
+        return timelineStore.events
+            .filter { $0.type == .nightWaking && $0.timestamp >= bedtime.startTime }
+            .sorted { $0.timestamp < $1.timestamp }
+    }
+
+    private func nightWakeRow(_ wake: TimelineEvent) -> some View {
+        HStack(spacing: 10) {
+            Image(systemName: "moon.zzz.fill")
+                .font(.system(size: 14))
+                .foregroundStyle(.moonSleep)
+
+            VStack(alignment: .leading, spacing: 1) {
+                Text("Night waking")
+                    .font(.system(size: 14, weight: .medium))
+                    .foregroundStyle(.white)
+                if let subtitle = wake.subtitle {
+                    Text(subtitle)
+                        .font(.system(size: 12))
+                        .foregroundStyle(.white.opacity(0.5))
+                }
+            }
+
+            Spacer()
+
+            Text(Self.awakeWindowText(for: wake))
+                .font(.system(size: 13).monospacedDigit())
+                .foregroundStyle(.white.opacity(0.6))
+        }
+        .padding(.horizontal, 16)
+        .padding(.vertical, 10)
+        .background(.white.opacity(0.08), in: RoundedRectangle(cornerRadius: 16))
+    }
+
+    /// "1:30 – 1:38 AM" when we know how long baby was awake, otherwise the wake time.
+    static func awakeWindowText(for event: TimelineEvent) -> String {
+        let start = event.timestamp.formatted(date: .omitted, time: .shortened)
+        guard let duration = event.wakeDuration, duration > 0 else { return start }
+        let end = event.timestamp.addingTimeInterval(duration)
+            .formatted(date: .omitted, time: .shortened)
+        return "\(start) – \(end)"
     }
 
     private var sleepingLabel: String {
@@ -366,15 +424,16 @@ struct SleepTrackingScreen: View {
         if !noteText.isEmpty { parts.append(noteText) }
         let subtitle = parts.isEmpty ? nil : parts.joined(separator: " — ")
 
-        let wakeDur: TimeInterval? = wakeStartTime.map { Date.now.timeIntervalSince($0) }
+        let wakeStart = wakeStartTime ?? .now
+        let wakeDur = Date.now.timeIntervalSince(wakeStart)
 
         timelineStore.logNightWake(
             subtitle: subtitle,
+            timestamp: wakeStart,
             audioURL: voiceRecorder.recordingURL,
             wakeDuration: wakeDur
         )
 
-        wakeCount += 1
         noteText = ""
         selectedReason = nil
         wakeStartTime = nil

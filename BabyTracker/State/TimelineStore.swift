@@ -37,9 +37,10 @@ final class TimelineStore {
         addEvent(TimelineEvent(type: .temperature, title: "Temperature", subtitle: value))
     }
 
-    func logNightWake(subtitle: String? = nil, audioURL: URL? = nil, wakeDuration: TimeInterval? = nil) {
+    func logNightWake(subtitle: String? = nil, timestamp: Date = .now, audioURL: URL? = nil, wakeDuration: TimeInterval? = nil) {
         addEvent(TimelineEvent(type: .nightWaking, title: "Night waking",
-                               subtitle: subtitle, audioURL: audioURL, wakeDuration: wakeDuration))
+                               subtitle: subtitle, timestamp: timestamp,
+                               audioURL: audioURL, wakeDuration: wakeDuration))
     }
 
     func logBedtime() {
